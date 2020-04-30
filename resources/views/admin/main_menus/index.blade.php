@@ -6,7 +6,7 @@
     @can('main_menu_create')
     <p>
         <a href="{{ route('admin.main_menus.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
+
     </p>
     @endcan
 
@@ -34,7 +34,6 @@
                         @endcan
 
                         <th>@lang('quickadmin.main-menu.fields.title')</th>
-                        <th>@lang('quickadmin.main-menu.fields.link')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
@@ -42,7 +41,7 @@
                         @endif
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($main_menus) > 0)
                         @foreach ($main_menus as $main_menu)
@@ -52,7 +51,6 @@
                                 @endcan
 
                                 <td field-key='title'>{{ $main_menu->title }}</td>
-                                <td field-key='link'>{{ $main_menu->link }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     @can('main_menu_delete')
@@ -106,7 +104,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
         @can('main_menu_delete')
             @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.main_menus.mass_destroy') }}'; @endif

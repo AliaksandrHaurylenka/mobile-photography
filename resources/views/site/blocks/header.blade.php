@@ -10,42 +10,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto smooth-scroll">
-                <li class="nav-item">
-                    <a class="nav-link" href="#home">Домой</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#portfolio">Портфолио</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#programs">Программа</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Оплатить</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#reviews">Отзывы</a>
-                </li>
+                @if(isset($main_menu))
+                    @foreach($main_menu as $item)
+                    <li class="nav-item">
+                        <a class="nav-link" href="#{{$item->link}}">{{$item->title}}</a>
+                    </li>
+                    @endforeach
+                @endif
             </ul>
             <!-- Social Icon  -->
-            <!-- <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
-                    <a class="nav-link" href="#!"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#!"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#!"><i class="fab fa-instagram"></i></a>
-                </li>
-            </ul> -->
             <ul class="navbar-nav nav-flex-icons">
-            @if(isset($social))
-                @foreach($social as $item)
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{$item->link}}"><i class="fab fa-{{$item->title}}"></i></a>
-                    </li>
-                @endforeach
-            @endif
+                @if(isset($social))
+                    @foreach($social as $item)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{$item->link}}"><i class="fab fa-{{$item->title}}"></i></a>
+                        </li>
+                    @endforeach
+                @endif
             </ul>
         </div>
     </div>

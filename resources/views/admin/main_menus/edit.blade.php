@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.main-menu.title')</h3>
-    
+
     {!! Form::model($main_menu, ['method' => 'PUT', 'route' => ['admin.main_menus.update', $main_menu->id]]) !!}
 
     <div class="panel panel-default">
@@ -23,19 +23,6 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('link', trans('quickadmin.main-menu.fields.link').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('link', old('link'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('link'))
-                        <p class="help-block">
-                            {{ $errors->first('link') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            
         </div>
     </div>
 

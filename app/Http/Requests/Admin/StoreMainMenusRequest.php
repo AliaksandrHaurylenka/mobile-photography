@@ -24,7 +24,6 @@ class StoreMainMenusRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'link' => 'required',
         ];
     }
 }

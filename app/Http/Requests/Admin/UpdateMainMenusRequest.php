@@ -23,9 +23,8 @@ class UpdateMainMenusRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'title' => 'required',
-            'link' => 'required',
+
+            'title' => 'required'
         ];
     }
 }

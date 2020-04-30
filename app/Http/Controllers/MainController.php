@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\URL;
 
 use App\Program;
 use App\MenuSocial;
+use App\MainMenu;
 
 class MainController extends Controller
 {
@@ -16,7 +17,8 @@ class MainController extends Controller
     {
         $program = Program::all();
         $social = MenuSocial::all();
+        $main_menu = MainMenu::all();
 
-        return view('site.index', compact('program', 'social'));
+        return view('site.index', compact('program', 'social', 'main_menu'));
     }
 }
