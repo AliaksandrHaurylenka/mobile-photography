@@ -4,15 +4,15 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="keywords" content="Мобильная фотография">
     <meta name="description" content="Видео-курс по мобильной фотографии от Алины Гавриленко">
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-    <title>Мобильная фотография</title>
+    <link rel="shortcut icon" href="{{ asset('img/favicon/favicon.ico') }}" type="image/x-icon">
+    <title>{{ config('app.name') }}</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <style>
         html,
         body,
