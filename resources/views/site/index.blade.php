@@ -1,48 +1,53 @@
-<?php
-//phpinfo();
-  header('Content-Type: text/html; charset=utf-8');
+@extends('layouts.site')
 
-//Включение всех ошибок и предупреждений
-  ini_set('error_reporting', E_ALL);
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-?>
-<!DOCTYPE html>
-<html lang="ru">
+@section('head')
+  @include('site.blocks.head')
+@endsection
 
-    @include('site.blocks.head')
+@section('header')
+  @include('site.blocks.header')
+@endsection
 
-<body class="construction-lp">
+@section('results')
+  @include('site.blocks.results')
+@endsection
 
-    @include('site.blocks.header')
+@section('forwhom')
+  @include('site.blocks.forwhom')
+@endsection
 
-    <!-- Main content -->
-    <main>
+@section('portfolio')
+  @include('site.blocks.portfolio')
+@endsection
 
-        <div class="container">
-            @include('site.blocks.results')
-            <hr class="mt-5 pb-4">
-            @include('site.blocks.forwhom')
-            <hr class="mt-5 pb-4">
-            @include('site.blocks.portfolio')
-        </div>
+@section('quote')
+  @include('site.blocks.quote')
+@endsection
 
-        @include('site.blocks.quote')
+@section('programs')
+  @include('site.blocks.programs')
+@endsection
 
-        @include('site.blocks.programs')
+@section('price')
+  @include('site.blocks.price')
+@endsection
 
-        @include('site.blocks.price')
+@section('streak')
+  @include('site.blocks.streak')
+@endsection
 
-        @include('site.blocks.streak')
+@section('topay')
+  @include('site.blocks.topay')
+@endsection
 
-        @include('site.blocks.topay')
+@section('comments')
+  @include('site.blocks.comments')
+@endsection
 
-        @include('site.blocks.comments')
+@section('footer')
+  @include('site.blocks.footer')
+@endsection
 
-    </main>
-    <!-- Main content -->
-    @include('site.blocks.footer')
-    @include('site.blocks.scripts')
-</body>
-
-</html>
+@section('scripts')
+  @include('site.blocks.scripts')
+@endsection

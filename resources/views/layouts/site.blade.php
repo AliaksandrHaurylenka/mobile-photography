@@ -10,39 +10,39 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-    @include('site.blocks.head')
+    @yield('head')
 
 <body class="construction-lp">
 
-    @include('site.blocks.header')
+    @yield('header')
 
     <!-- Main content -->
     <main>
 
         <div class="container">
-            @include('site.blocks.results')
+            @yield('results')
             <hr class="mt-5 pb-4">
-            @include('site.blocks.forwhom')
+            @yield('forwhom')
             <hr class="mt-5 pb-4">
-            @include('site.blocks.portfolio')
+            @yield('portfolio')
         </div>
 
-        @include('site.blocks.quote')
+        @yield('quote')
 
-        @include('site.blocks.programs')
+        @yield('programs')
 
-        @include('site.blocks.price')
+        @yield('price')
 
-        @include('site.blocks.streak')
+        @yield('streak')
 
-        @include('site.blocks.topay')
+        @yield('topay')
 
-        @include('site.blocks.comments')
+        @yield('comments')
 
     </main>
     <!-- Main content -->
-    @include('site.blocks.footer')
-    @include('site.blocks.scripts')
+    @yield('footer')
+    @yield('scripts')
 </body>
 
 </html>
