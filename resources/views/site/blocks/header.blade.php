@@ -27,7 +27,7 @@
                 </li>
             </ul>
             <!-- Social Icon  -->
-            <ul class="navbar-nav nav-flex-icons">
+            <!-- <ul class="navbar-nav nav-flex-icons">
                 <li class="nav-item">
                     <a class="nav-link" href="#!"><i class="fab fa-facebook-f"></i></a>
                 </li>
@@ -37,6 +37,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#!"><i class="fab fa-instagram"></i></a>
                 </li>
+            </ul> -->
+            <ul class="navbar-nav nav-flex-icons">
+            @if(isset($social))
+                @foreach($social as $item)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{$item->link}}"><i class="fab fa-{{$item->title}}"></i></a>
+                    </li>
+                @endforeach
+            @endif
             </ul>
         </div>
     </div>
