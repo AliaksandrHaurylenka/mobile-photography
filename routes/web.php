@@ -1,5 +1,8 @@
 <?php
-Route::get('/', function () { return redirect('/admin/home'); });
+Route::get('/', 'MainController@index')->name('main');
+
+// Backend...
+Route::get('/admin', function () { return redirect('/admin/home'); });
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
