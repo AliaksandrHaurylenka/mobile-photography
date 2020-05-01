@@ -1,5 +1,4 @@
 <!-- Section: Portfolio -->
-{{--<section id="{{DB::table('main_menus')->where('title', 'Портфолио')->value('link')}}" class="section mb-5">--}}
 <section id="{{$ancors['portfolio']}}" class="section mb-5">
 
 <!-- Section heading -->
