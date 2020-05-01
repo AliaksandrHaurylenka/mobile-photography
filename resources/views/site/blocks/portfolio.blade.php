@@ -1,5 +1,6 @@
 <!-- Section: Portfolio -->
-<section id="portfolio" class="section mb-5">
+{{--<section id="{{DB::table('main_menus')->where('title', 'Портфолио')->value('link')}}" class="section mb-5">--}}
+<section id="{{$ancors['portfolio']}}" class="section mb-5">
 
 <!-- Section heading -->
 <h3 class="text-center text-uppercase font-weight-bold mb-5 mt-5 pt-4 wow fadeIn" data-wow-delay="0.2s">Мои работы</h3>

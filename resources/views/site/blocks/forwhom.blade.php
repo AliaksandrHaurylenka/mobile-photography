@@ -1,5 +1,5 @@
 <!-- Section: For whom -->
-<section id="for-whom" class="section feature-box mb-3 mt-5 pt-4 pb-3">
+<section class="section feature-box mb-3 mt-5 pt-4 pb-3">
     <!-- Section description -->
     <h2 class="text-center text-uppercase font-weight-bold mb-5 mt-4 wow fadeIn" data-wow-delay="0.2s">Для кого этот курс</h2>
 
