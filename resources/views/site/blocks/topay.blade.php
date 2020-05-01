@@ -1,7 +1,7 @@
 <div class="container-fluid background-grey">
     <div class="container">
         <!-- Section: Contact v.2 -->
-        <section id="contact" class="section mb-5">
+        <section id="{{$ancors['topay']}}" class="section mb-5">
 
             <!-- Section heading -->
             <h3 class="text-center text-uppercase font-weight-bold pt-5 wow fadeIn" data-wow-delay="0.2s">оплатить курс</h3>

@@ -1,7 +1,7 @@
 <div class="container">
 
             <!--Comments-->
-            <section id="reviews" class="section mb-5">
+            <section id="{{$ancors['reviews']}}" class="section mb-5">
 
             <!--Main wrapper-->
             <div class="comments-list text-center text-md-left">

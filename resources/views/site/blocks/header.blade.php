@@ -33,7 +33,7 @@
 </nav>
 
 <!-- Intro Section -->
-<div id="home" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url(img/phone-690091_1280.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+<div id="{{$ancors['home']}}" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url(img/phone-690091_1280.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
     <div class="mask rgba-black-light">
         <div class="container h-100 d-flex justify-content-center align-items-center">
             <div class="row smooth-scroll">
