@@ -6,7 +6,7 @@
     @can('price_create')
     <p>
         <a href="{{ route('admin.prices.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
+
     </p>
     @endcan
 
@@ -43,7 +43,7 @@
                         @endif
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($prices) > 0)
                         @foreach ($prices as $price)
@@ -52,7 +52,7 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
-                                <td field-key='flag'>@if($price->flag)<a href="{{ asset(env('UPLOAD_PATH').'/' . $price->flag) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $price->flag) }}"/></a>@endif</td>
+                                <td field-key='flag'>@if($price->flag)<a href="{{ asset(env('UPLOAD_PATH').'/img/' . $price->flag) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/img/' . $price->flag) }}"/></a>@endif</td>
                                 <td field-key='price'>{{ $price->price }}</td>
                                 <td field-key='currency'>{{ $price->currency }}</td>
                                 @if( request('show_deleted') == 1 )
@@ -108,7 +108,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
         @can('price_delete')
             @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.prices.mass_destroy') }}'; @endif

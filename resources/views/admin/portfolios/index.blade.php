@@ -6,7 +6,7 @@
     @can('portfolio_create')
     <p>
         <a href="{{ route('admin.portfolios.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
+
     </p>
     @endcan
 
@@ -35,7 +35,6 @@
 
                         <th>@lang('quickadmin.portfolio.fields.photo')</th>
                         <th>@lang('quickadmin.portfolio.fields.category')</th>
-                        <th>@lang('quickadmin.categories.fields.link')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
@@ -43,7 +42,7 @@
                         @endif
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($portfolios) > 0)
                         @foreach ($portfolios as $portfolio)
@@ -54,7 +53,7 @@
 
                                 <td field-key='photo'>@if($portfolio->photo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $portfolio->photo) }}" target="_blank">Download file</a>@endif</td>
                                 <td field-key='category'>{{ $portfolio->category->title ?? '' }}</td>
-<td field-key='link'>{{ isset($portfolio->category) ? $portfolio->category->link : '' }}</td>
+
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     @can('portfolio_delete')
@@ -108,7 +107,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
         @can('portfolio_delete')
             @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.portfolios.mass_destroy') }}'; @endif

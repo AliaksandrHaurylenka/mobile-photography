@@ -6,7 +6,7 @@
     @can('category_create')
     <p>
         <a href="{{ route('admin.categories.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
+
     </p>
     @endcan
 
@@ -34,7 +34,6 @@
                         @endcan
 
                         <th>@lang('quickadmin.categories.fields.title')</th>
-                        <th>@lang('quickadmin.categories.fields.link')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
@@ -42,7 +41,7 @@
                         @endif
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($categories) > 0)
                         @foreach ($categories as $category)
@@ -52,7 +51,6 @@
                                 @endcan
 
                                 <td field-key='title'>{{ $category->title }}</td>
-                                <td field-key='link'>{{ $category->link }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     @can('category_delete')
@@ -106,7 +104,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
         @can('category_delete')
             @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.categories.mass_destroy') }}'; @endif

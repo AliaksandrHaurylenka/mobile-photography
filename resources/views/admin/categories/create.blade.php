@@ -8,7 +8,7 @@
         <div class="panel-heading">
             @lang('quickadmin.qa_create')
         </div>
-        
+
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
@@ -22,19 +22,7 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('link', trans('quickadmin.categories.fields.link').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('link', old('link'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('link'))
-                        <p class="help-block">
-                            {{ $errors->first('link') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            
+
         </div>
     </div>
 
