@@ -23,7 +23,7 @@
                 @if(isset($social))
                     @foreach($social as $item)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{$item->link}}"><i class="fab fa-{{$item->title}}"></i></a>
+                            <a class="nav-link" href="http://{{$item->link}}" target="_blank"><i class="fab fa-{{$item->title}}"></i></a>
                         </li>
                     @endforeach
                 @endif
