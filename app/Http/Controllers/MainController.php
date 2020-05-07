@@ -12,6 +12,7 @@ use App\Program;
 use App\MenuSocial;
 use App\MainMenu;
 use App\Price;
+use App\Category;
 
 class MainController extends Controller
 {
@@ -28,7 +29,8 @@ class MainController extends Controller
             'reviews' => DB::table('main_menus')->where('title', 'Отзывы')->value('link')
         ];
         $prices = Price::all();
+        $categories = Category::all();
 
-        return view('site.index', compact('program', 'social', 'main_menu', 'ancors', 'prices'));
+        return view('site.index', compact('program', 'social', 'main_menu', 'ancors', 'prices', 'categories'));
     }
 }

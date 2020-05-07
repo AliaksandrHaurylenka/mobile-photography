@@ -17,6 +17,7 @@ class Create1588159432CategoriesTable extends Migration
                 $table->increments('id');
                 $table->string('title')->nullable();
                 $table->string('link')->nullable();
+                $table->string('active')->nullable();
                 
                 $table->timestamps();
                 $table->softDeletes();

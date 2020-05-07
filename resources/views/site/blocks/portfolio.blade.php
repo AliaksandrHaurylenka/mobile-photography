@@ -12,18 +12,15 @@
 
         <!--  Nav tabs  -->
         <ul class="nav md-pills flex-center flex-wrap mx-0 mb-4" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active font-weight-bold text-uppercase" data-toggle="tab" href="#panel31" role="tab"><br>природа</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold text-uppercase" data-toggle="tab" href="#panel33" role="tab"><br>лица</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold text-uppercase" data-toggle="tab" href="#panel32" role="tab"><br>архитектура</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold text-uppercase" data-toggle="tab" href="#panel34" role="tab"><br>другое</a>
-            </li>
+            @if(isset($categories))
+                @foreach($categories as $category)
+                    <li class="nav-item">
+                        <a class="nav-link {{$category->active}} font-weight-bold text-uppercase" data-toggle="tab" href="#{{$category->link}}" role="tab">
+                            <br>{{$category->title}}
+                        </a>
+                    </li>
+                @endforeach
+            @endif
         </ul>
 
     </div>
