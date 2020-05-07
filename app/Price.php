@@ -16,10 +16,12 @@ class Price extends Model
 {
     use SoftDeletes;
 
+    const  PATH = 'img';
+
     protected $fillable = ['flag', 'price', 'currency'];
     protected $hidden = [];
-    
-    
+
+
 
     /**
      * Set attribute to money format
@@ -29,5 +31,5 @@ class Price extends Model
     {
         $this->attributes['price'] = $input ? $input : null;
     }
-    
+
 }

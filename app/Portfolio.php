@@ -15,10 +15,12 @@ class Portfolio extends Model
 {
     use SoftDeletes;
 
+    const PATH = 'img/portfolio';
+
     protected $fillable = ['photo', 'before_after', 'category_id'];
     protected $hidden = [];
-    
-    
+
+
 
     /**
      * Set to null if empty
@@ -28,10 +30,10 @@ class Portfolio extends Model
     {
         $this->attributes['category_id'] = $input ? $input : null;
     }
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id')->withTrashed();
     }
-    
+
 }

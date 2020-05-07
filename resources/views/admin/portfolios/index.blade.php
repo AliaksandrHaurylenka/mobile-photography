@@ -53,7 +53,7 @@
                                 @endcan
 
                                 {{--<td field-key='photo'>@if($portfolio->photo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $portfolio->photo) }}" target="_blank">Download file</a>@endif</td>--}}
-                                <td field-key='photo' style="width: 30%">@if($portfolio->photo)<a href="{{ asset(env('UPLOAD_PATH').'/img/' . $portfolio->photo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/img/' . $portfolio->photo) }}" class="img-responsive"/></a>@endif</td>
+                                <td field-key='photo' style="width: 30%">@if($portfolio->photo)<a href="{{ asset(env('UPLOAD_PATH').'/img/' . $portfolio->photo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/img/portfolio/' . $portfolio->photo) }}" class="img-responsive"/></a>@endif</td>
                                 <td field-key='before_after'>{{ $portfolio->before_after }}</td>
                                 <td field-key='category'>{{ $portfolio->category->title ?? '' }}</td>
 

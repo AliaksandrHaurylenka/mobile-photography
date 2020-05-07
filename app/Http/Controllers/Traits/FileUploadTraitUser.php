@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Traits;
 
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use App\Price;
+use App\Portfolio;
 
 trait FileUploadTraitUser
 {
@@ -14,7 +16,13 @@ trait FileUploadTraitUser
     public function saveFiles(Request $request)
     {
 
-		$uploadPath = public_path(env('UPLOAD_PATH').'/img');
+        // $uploadPath = public_path(env('UPLOAD_PATH').'/img');
+        if($request->hasFile('flag')){
+            $uploadPath = Price::PATH;
+        }elseif($request->hasFile('photo')){
+            $uploadPath = Portfolio::PATH;
+        }
+
 
         if (! file_exists($uploadPath)) {
             mkdir($uploadPath, 0775);
