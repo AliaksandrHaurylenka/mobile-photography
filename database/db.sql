@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `menu_socials` (
   KEY `menu_socials_deleted_at_index` (`deleted_at`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.menu_socials: ~2 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.menu_socials: ~3 rows (приблизительно)
 /*!40000 ALTER TABLE `menu_socials` DISABLE KEYS */;
 INSERT INTO `menu_socials` (`id`, `title`, `link`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 'facebook-f', 'facebook.com', '2020-05-07 05:15:36', '2020-05-07 05:15:36', NULL),
@@ -132,12 +132,12 @@ CREATE TABLE IF NOT EXISTS `portfolios` (
   KEY `portfolios_deleted_at_index` (`deleted_at`),
   KEY `339557_5ea9645e9a322` (`category_id`),
   CONSTRAINT `339557_5ea9645e9a322` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.portfolios: ~0 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.portfolios: ~1 rows (приблизительно)
 /*!40000 ALTER TABLE `portfolios` DISABLE KEYS */;
 INSERT INTO `portfolios` (`id`, `photo`, `before_after`, `created_at`, `updated_at`, `deleted_at`, `category_id`) VALUES
-	(6, '1588857245-phone-690091_1280.jpg', 'До', '2020-05-07 13:14:05', '2020-05-07 13:14:05', NULL, 1);
+	(9, '1588866315-phone-690091_1280.jpg', 'После', '2020-05-07 15:45:15', '2020-05-07 15:45:15', NULL, 1);
 /*!40000 ALTER TABLE `portfolios` ENABLE KEYS */;
 
 -- Дамп структуры для таблица mobile-photography.prices
@@ -151,14 +151,15 @@ CREATE TABLE IF NOT EXISTS `prices` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `prices_deleted_at_index` (`deleted_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.prices: ~2 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.prices: ~4 rows (приблизительно)
 /*!40000 ALTER TABLE `prices` DISABLE KEYS */;
 INSERT INTO `prices` (`id`, `flag`, `price`, `currency`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, '1588829279-by.png', 30, 'BY', '2020-05-07 05:27:59', '2020-05-07 05:27:59', NULL),
 	(2, '1588829309-ru.png', 900, 'RU', '2020-05-07 05:28:29', '2020-05-07 05:28:29', NULL),
-	(3, '1588829336-ua.png', 330, 'UA', '2020-05-07 05:28:56', '2020-05-07 05:28:56', NULL);
+	(3, '1588829336-ua.png', 330, 'UA', '2020-05-07 05:28:56', '2020-05-07 05:28:56', NULL),
+	(17, '1588874498-ru.png', 325, 'BY', '2020-05-07 18:01:38', '2020-05-07 18:01:38', NULL);
 /*!40000 ALTER TABLE `prices` ENABLE KEYS */;
 
 -- Дамп структуры для таблица mobile-photography.programs
@@ -211,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   CONSTRAINT `339554_5ea95ed107af7` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.users: ~0 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.users: ~1 rows (приблизительно)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role_id`) VALUES
 	(1, 'Admin', 'admin@admin.com', NULL, NULL, NULL, '$2y$10$UjaWyL4rM0MAHTQD1xq.AeuN3QQNDq2UO9R26MEN4r1nxSG7Mvyji', '', '2020-05-07 04:49:26', '2020-05-07 04:49:26', 1);
