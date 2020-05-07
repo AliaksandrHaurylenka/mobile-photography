@@ -101,6 +101,9 @@ class PricesController extends Controller
         }
         $request = $this->saveFiles($request);
         $price = Price::findOrFail($id);
+        if($_FILES['image']['name']){
+            $price->removeImg();
+        }
         $price->update($request->all());
 
 
@@ -193,6 +196,7 @@ class PricesController extends Controller
         }
         $price = Price::onlyTrashed()->findOrFail($id);
         $price->forceDelete();
+        $price->remove();
 
         return redirect()->route('admin.prices.index');
     }

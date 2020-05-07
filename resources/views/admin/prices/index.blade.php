@@ -52,7 +52,7 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
-                                <td field-key='flag'>@if($price->flag)<a href="{{ asset(env('UPLOAD_PATH').'/img/' . $price->flag) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/img/' . $price->flag) }}" class="img-responsive" /></a>@endif</td>
+                                <td field-key='flag'>@if($price->flag)<a href="{{ asset(env('UPLOAD_PATH'). App\Price::PATH . $price->flag) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH'). App\Price::PATH . $price->flag) }}" class="img-responsive" /></a>@endif</td>
                                 <td field-key='price'>{{ $price->price }}</td>
                                 <td field-key='currency'>{{ $price->currency }}</td>
                                 @if( request('show_deleted') == 1 )
