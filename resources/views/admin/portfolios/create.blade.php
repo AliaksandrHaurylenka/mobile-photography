@@ -29,13 +29,13 @@
                     <div class="radio">
                         <label>
                             {!! Form::radio('before_after', 'До', false, ['required' => '']) !!}
-                            Фото До
+                            Фото До обработки
                         </label>                        
                     </div>
                     <div class="radio">
                         <label>
                         {!! Form::radio('before_after', 'После', false, ['required' => '']) !!}
-                            Фото После
+                            Фото После обработки
                         </label>                        
                     </div>
                     
