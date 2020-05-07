@@ -6,13 +6,13 @@ use App\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\FileUploadTraitUser;
 use App\Http\Requests\Admin\StorePortfoliosRequest;
 use App\Http\Requests\Admin\UpdatePortfoliosRequest;
-use App\Http\Controllers\Traits\FileUploadTrait;
 
 class PortfoliosController extends Controller
 {
-    use FileUploadTrait;
+    use FileUploadTraitUser;
 
     /**
      * Display a listing of Portfolio.
