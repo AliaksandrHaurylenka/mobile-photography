@@ -15,7 +15,7 @@ class Portfolio extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['photo', 'category_id'];
+    protected $fillable = ['photo', 'before_after', 'category_id'];
     protected $hidden = [];
     
     

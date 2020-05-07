@@ -14,7 +14,7 @@ class Add5ea96463b8ff0RelationshipsToPortfolioTable extends Migration
     {
         Schema::table('portfolios', function(Blueprint $table) {
             if (!Schema::hasColumn('portfolios', 'category_id')) {
-                $table->integer('category_id')->unsigned()->nullable();
+                $table->integer('category_id')->unsigned();
                 $table->foreign('category_id', '339557_5ea9645e9a322')->references('id')->on('categories')->onDelete('cascade');
                 }
                 
