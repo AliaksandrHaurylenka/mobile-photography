@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Program;
 use App\MenuSocial;
 use App\MainMenu;
+use App\Price;
 
 class MainController extends Controller
 {
@@ -26,7 +27,8 @@ class MainController extends Controller
             'topay' => DB::table('main_menus')->where('title', 'Оплатить')->value('link'),
             'reviews' => DB::table('main_menus')->where('title', 'Отзывы')->value('link')
         ];
+        $prices = Price::all();
 
-        return view('site.index', compact('program', 'social', 'main_menu', 'ancors'));
+        return view('site.index', compact('program', 'social', 'main_menu', 'ancors', 'prices'));
     }
 }

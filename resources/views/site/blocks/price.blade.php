@@ -8,15 +8,13 @@
 
             <div class="row justify-content-center">
                 <ul class="list-group pb-5 col-sm-5">
-                    <li class="list-group-item">
-                        <div class="md-v-line"></div><img src="img/by.png" class="img-fluid mr-5" alt="BY">30 BY
-                    </li>
-                    <li class="list-group-item">
-                        <div class="md-v-line"></div><img src="img/ru.png" class="img-fluid mr-5" alt="RU">900 RU
-                    </li>
-                    <li class="list-group-item">
-                        <div class="md-v-line"></div><img src="img/ua.png" class="img-fluid mr-5" alt="UA">330 UA
-                    </li>
+                    @if(isset($prices))
+                        @foreach($prices as $price)
+                            <li class="list-group-item">
+                                <div class="md-v-line"></div><img src='{{ asset("img/$price->flag") }}' class="img-fluid mr-5" alt="{{ $price->currency }}">{{ $price->price }} {{ $price->currency }}
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
 
