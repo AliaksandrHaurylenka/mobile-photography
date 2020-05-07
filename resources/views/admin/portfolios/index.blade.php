@@ -34,6 +34,7 @@
                         @endcan
 
                         <th>@lang('quickadmin.portfolio.fields.photo')</th>
+                        <th>@lang('quickadmin.portfolio.fields.before_after')</th>
                         <th>@lang('quickadmin.portfolio.fields.category')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
@@ -52,6 +53,7 @@
                                 @endcan
 
                                 <td field-key='photo'>@if($portfolio->photo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $portfolio->photo) }}" target="_blank">Download file</a>@endif</td>
+                                <td field-key='before_after'>{{ $portfolio->before_after }}</td>
                                 <td field-key='category'>{{ $portfolio->category->title ?? '' }}</td>
 
                                 @if( request('show_deleted') == 1 )
