@@ -3,7 +3,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Class Price
@@ -17,7 +16,7 @@ class Price extends Model
 {
     use SoftDeletes;
 
-    const  PATH = '/img/';
+    const  PATH = 'img/';
 
     protected $fillable = ['flag', 'price', 'currency'];
     protected $hidden = [];
@@ -40,10 +39,9 @@ class Price extends Model
      */
     public function removeImg()
     {
-        //dd($this->flag);
       if ($this->flag != null) {
-        Storage::delete(Price::PATH . $this->flag);
-        // unlink(storage_path(Price::PATH . '/' . $this->flag));
+        // Storage::delete(Price::PATH . $this->flag);
+        unlink(public_path(Price::PATH . $this->flag));
       }
     }
 

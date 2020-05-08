@@ -15,9 +15,6 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('photo', trans('quickadmin.portfolio.fields.photo').'*', ['class' => 'control-label']) !!}
                     {!! Form::hidden('photo', old('photo')) !!}
-                    @if ($portfolio->photo)
-                        <a href="{{ asset(env('UPLOAD_PATH').'/' . $portfolio->photo) }}" target="_blank">Download file</a>
-                    @endif
                     {!! Form::file('photo', ['class' => 'form-control']) !!}
                     {!! Form::hidden('photo_max_size', 2) !!}
                     <p class="help-block"></p>

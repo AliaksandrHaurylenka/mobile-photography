@@ -15,7 +15,7 @@ class Portfolio extends Model
 {
     use SoftDeletes;
 
-    const PATH = 'img/portfolio';
+    const PATH = 'img/portfolio/';
 
     protected $fillable = ['photo', 'before_after', 'category_id'];
     protected $hidden = [];
@@ -34,6 +34,27 @@ class Portfolio extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id')->withTrashed();
+    }
+
+    /**
+     * Удаление фото при удалении записи в базе
+     * Функция используется в update
+     */
+    public function removeImg()
+    {
+      if ($this->photo != null) {
+        unlink(public_path(Portfolio::PATH . $this->photo));
+      }
+    }
+
+    /**
+     * Удаление фото при удалении записи в базе
+     * Функция используется в perma_del
+     */
+    public function remove()
+    {
+      $this->removeImg();
+      $this->forceDelete();
     }
 
 }

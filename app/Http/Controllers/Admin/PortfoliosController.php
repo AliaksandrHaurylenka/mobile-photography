@@ -107,6 +107,9 @@ class PortfoliosController extends Controller
         }
         $request = $this->saveFiles($request);
         $portfolio = Portfolio::findOrFail($id);
+        if($_FILES['photo']['name']){
+            $portfolio->removeImg();
+        }
         $portfolio->update($request->all());
 
 
@@ -199,6 +202,7 @@ class PortfoliosController extends Controller
         }
         $portfolio = Portfolio::onlyTrashed()->findOrFail($id);
         $portfolio->forceDelete();
+        $portfolio->remove();
 
         return redirect()->route('admin.portfolios.index');
     }

@@ -101,7 +101,7 @@ class PricesController extends Controller
         }
         $request = $this->saveFiles($request);
         $price = Price::findOrFail($id);
-        if($_FILES['image']['name']){
+        if($_FILES['flag']['name']){
             $price->removeImg();
         }
         $price->update($request->all());
