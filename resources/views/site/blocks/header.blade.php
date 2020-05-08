@@ -33,21 +33,8 @@
 </nav>
 
 <!-- Intro Section -->
-<div id="{{$ancors['home']}}" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url(img/phone-690091_1280.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-    <div class="mask rgba-black-light">
-        <div class="container h-100 d-flex justify-content-center align-items-center">
-            <div class="row smooth-scroll">
-                <div class="col-md-12 text-center">
-                    <div class="text-white wow fadeInDown">
-                        <h1 class="h1-responsive text-uppercase font-weight-bold">мобильная фотография</h1>
-                        <hr class="hr-light my-4">
-                        <h4 class="subtext-header white-text mb-3">Видео-курс по мобильной обработке "Визуал на миллион"</h4>
-                    </div>
-                    <a href="#contact" data-offset="100" class="btn blue-gradient btn-rounded wow fadeInUp" data-wow-delay="0.2s">Купить курс</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<div id="{{$ancors['home']}}" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url(img/1588251986707263.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="mask rgba-black-light"></div>
 </div>
 
 </header>
