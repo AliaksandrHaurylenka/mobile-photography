@@ -30,45 +30,18 @@
     <div class="tab-content pt-0">
 
         <!-- Panel 1 -->
-        <div class="tab-pane fade show in active" id="panel31" role="tabpanel">
+        <div class="tab-pane fade show in active text-center" id="panel31" role="tabpanel">
             <br>
 
             <!-- Grid row -->
-            <div class="row">
-
+            <div class="row justify-content-center">
                 <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%281%29.jpg" class="img-fluid">
-                    </div>
-
+                <div class="col-md-6 mb-5">
+                    <video class="video-fluid z-depth-1" controls poster="/img/portfolio/poster11.jpg">
+                        <source src="/img/portfolio/IMG_6775.MOV" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                    </video>
                 </div>
                 <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%282%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%283%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
             </div>
             <!-- Grid row -->
 
