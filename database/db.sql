@@ -132,10 +132,15 @@ CREATE TABLE IF NOT EXISTS `portfolios` (
   KEY `portfolios_deleted_at_index` (`deleted_at`),
   KEY `339557_5ea9645e9a322` (`category_id`),
   CONSTRAINT `339557_5ea9645e9a322` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.portfolios: ~0 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.portfolios: ~1 rows (приблизительно)
 /*!40000 ALTER TABLE `portfolios` DISABLE KEYS */;
+INSERT INTO `portfolios` (`id`, `photo`, `before_after`, `created_at`, `updated_at`, `deleted_at`, `category_id`) VALUES
+	(1, '1589194206-1588252362327448.jpg', 'До', '2020-05-11 10:50:06', '2020-05-11 10:50:06', NULL, 2),
+	(2, '1589194231-1588252362574602.jpg', 'После', '2020-05-11 10:50:31', '2020-05-11 10:50:31', NULL, 2),
+	(3, '1589196629-1588252361757707.jpg', 'До', '2020-05-11 11:30:29', '2020-05-11 11:30:29', NULL, 3),
+	(4, '1589196644-158825236252639.jpg', 'После', '2020-05-11 11:30:44', '2020-05-11 11:30:44', NULL, 3);
 /*!40000 ALTER TABLE `portfolios` ENABLE KEYS */;
 
 -- Дамп структуры для таблица mobile-photography.prices
@@ -149,9 +154,9 @@ CREATE TABLE IF NOT EXISTS `prices` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `prices_deleted_at_index` (`deleted_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.prices: ~4 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.prices: ~3 rows (приблизительно)
 /*!40000 ALTER TABLE `prices` DISABLE KEYS */;
 INSERT INTO `prices` (`id`, `flag`, `price`, `currency`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, '1588829279-by.png', 30, 'BY', '2020-05-07 05:27:59', '2020-05-07 05:27:59', NULL),
@@ -183,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.roles: ~0 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.roles: ~2 rows (приблизительно)
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, 'Administrator (can create other users)', '2020-05-07 04:49:25', '2020-05-07 04:49:25'),

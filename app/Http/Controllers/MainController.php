@@ -32,8 +32,8 @@ class MainController extends Controller
         $prices = Price::all();
         $categories = Category::all();
         $portfolio = Portfolio::all();
-        $portfolio_before = Portfolio::where('before_after', "До");
-        $portfolio_after = Portfolio::where('before_after', "После");
+        $portfolio_before = Portfolio::where('before_after', "До")->value('photo');
+        $portfolio_after = Portfolio::where('before_after', "После")->value('photo');
 
         // dd($portfolio_before);
 

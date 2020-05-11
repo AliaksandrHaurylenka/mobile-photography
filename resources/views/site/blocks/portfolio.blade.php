@@ -49,132 +49,44 @@
         </div>
         <!-- Panel 1 -->
 
-        <!-- Panel 2 -->
-        <div class="tab-pane fade" id="{{App\Category::find(2)->link}}" role="tabpanel">
-            <br>
+        @if(isset($portfolio))
+            @foreach($portfolio as $item)
+            @for($i = 1; $i < $loop -> count; $i++)
+                <div class="tab-pane fade" id="{{ $item->category->link }}" role="tabpanel">
+                    <br>
 
-            <!-- Grid row -->
-            <div class="row text-center">
+                    <!-- Grid row -->
+                    <div class="row text-center">
 
-                <!-- Grid column -->
-                <div class="col-md-6 mb-5">
+                        <!-- Grid column -->
+                        <div class="col-md-6 mb-5">
 
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%286%29.jpg" class="img-fluid">
+                            <!-- Featured image -->
+                            <div class="view overlay z-depth-1 zoom">
+                                <img src="/img/portfolio/{{ $item->where('id', $i)->value('photo') }}" class="img-fluid">
+                            </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-6 mb-5">
+
+                            <!-- Featured image -->
+                            <div class="view overlay z-depth-1 zoom">
+                                <img src="/img/portfolio/{{ $item->where('id', $i+1)->value('photo') }}" class="img-fluid">
+                            </div>
+
+                        </div>
+                        <!-- Grid column -->
+
                     </div>
+                    <!-- Grid row -->
 
                 </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%285%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-        </div>
-        <!-- Panel 2 -->
-
-        <!-- Panel 3 -->
-        <div class="tab-pane fade" id="panel33" role="tabpanel">
-            <br>
-
-            <!-- Grid row -->
-            <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%2810%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%2813%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%2814%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-        </div>
-        <!-- Panel 3 -->
-
-        <!-- Panel 4 -->
-        <div class="tab-pane fade" id="panel34" role="tabpanel">
-            <br>
-
-            <!-- Grid row -->
-            <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%289%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%288%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%286%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-        </div>
-        <!-- Panel 4 -->
+                @endfor
+            @endforeach
+        @endif
 
     </div>
     <!-- Tab panels -->
