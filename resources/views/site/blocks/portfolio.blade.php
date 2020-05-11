@@ -48,10 +48,10 @@
 
         </div>
         <!-- Panel 1 -->
-
+        @for($i = 1; $i < 10; $i++)
         @if(isset($portfolio))
             @foreach($portfolio as $item)
-            @for($i = 1; $i < $loop -> count; $i++)
+            
                 <div class="tab-pane fade" id="{{ $item->category->link }}" role="tabpanel">
                     <br>
 
@@ -84,10 +84,10 @@
                     <!-- Grid row -->
 
                 </div>
-                @endfor
+                
             @endforeach
         @endif
-
+        @endfor
     </div>
     <!-- Tab panels -->
 
