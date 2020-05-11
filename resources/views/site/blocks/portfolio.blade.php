@@ -30,7 +30,8 @@
     <div class="tab-content pt-0">
 
         <!-- Panel 1 -->
-        <div class="tab-pane fade show in active text-center" id="panel31" role="tabpanel">
+        <!-- <div class="tab-pane fade show in active text-center" id="panel31" role="tabpanel"> -->
+        <div class="tab-pane fade show in active text-center" id="{{App\Category::find(1)->link}}" role="tabpanel">
             <br>
 
             <!-- Grid row -->
@@ -49,14 +50,14 @@
         <!-- Panel 1 -->
 
         <!-- Panel 2 -->
-        <div class="tab-pane fade" id="panel32" role="tabpanel">
+        <div class="tab-pane fade" id="{{App\Category::find(2)->link}}" role="tabpanel">
             <br>
 
             <!-- Grid row -->
-            <div class="row">
+            <div class="row text-center">
 
                 <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
+                <div class="col-md-6 mb-5">
 
                     <!-- Featured image -->
                     <div class="view overlay z-depth-1 zoom">
@@ -67,22 +68,11 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
+                <div class="col-md-6 mb-5">
 
                     <!-- Featured image -->
                     <div class="view overlay z-depth-1 zoom">
                         <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%285%29.jpg" class="img-fluid">
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-4 col-md-6 mb-5">
-
-                    <!-- Featured image -->
-                    <div class="view overlay z-depth-1 zoom">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Architecture/4-col/img%20%284%29.jpg" class="img-fluid">
                     </div>
 
                 </div>

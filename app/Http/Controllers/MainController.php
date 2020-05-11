@@ -13,6 +13,7 @@ use App\MenuSocial;
 use App\MainMenu;
 use App\Price;
 use App\Category;
+use App\Portfolio;
 
 class MainController extends Controller
 {
@@ -30,7 +31,12 @@ class MainController extends Controller
         ];
         $prices = Price::all();
         $categories = Category::all();
+        $portfolio = Portfolio::all();
+        $portfolio_before = Portfolio::where('before_after', "До");
+        $portfolio_after = Portfolio::where('before_after', "После");
 
-        return view('site.index', compact('program', 'social', 'main_menu', 'ancors', 'prices', 'categories'));
+        // dd($portfolio_before);
+
+        return view('site.index', compact('program', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio', 'portfolio_before', 'portfolio_after'));
     }
 }
