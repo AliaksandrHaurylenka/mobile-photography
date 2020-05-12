@@ -16,10 +16,9 @@ trait FileUploadTraitUser
     public function saveFiles(Request $request)
     {
 
-        // $uploadPath = public_path(env('UPLOAD_PATH').'/img');
         if($request->hasFile('flag')){
             $uploadPath = Price::PATH;
-        }elseif($request->hasFile('photo')){
+        }elseif($request->hasFile('photo') || $request->hasFile('photo_after')){
             $uploadPath = Portfolio::PATH;
         }
 

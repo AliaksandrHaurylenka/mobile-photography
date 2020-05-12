@@ -48,7 +48,7 @@ class PortfoliosController extends Controller
         if (! Gate::allows('portfolio_create')) {
             return abort(401);
         }
-        
+
         $categories = \App\Category::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         return view('admin.portfolios.create', compact('categories'));
@@ -85,7 +85,7 @@ class PortfoliosController extends Controller
         if (! Gate::allows('portfolio_edit')) {
             return abort(401);
         }
-        
+
         $categories = \App\Category::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         $portfolio = Portfolio::findOrFail($id);
@@ -108,6 +108,9 @@ class PortfoliosController extends Controller
         $request = $this->saveFiles($request);
         $portfolio = Portfolio::findOrFail($id);
         if($_FILES['photo']['name']){
+            $portfolio->removeImg();
+        }
+        if($_FILES['photo_after']['name']){
             $portfolio->removeImg();
         }
         $portfolio->update($request->all());

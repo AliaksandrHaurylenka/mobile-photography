@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.portfolio.title')</h3>
-    
+
     {!! Form::model($portfolio, ['method' => 'PUT', 'route' => ['admin.portfolios.update', $portfolio->id], 'files' => true,]) !!}
 
     <div class="panel panel-default">
@@ -25,29 +25,22 @@
                     @endif
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    <div class="radio">
-                        <label>
-                            {!! Form::radio('before_after', 'До', false, ['required' => '']) !!}
-                            Фото До обработки
-                        </label>                        
-                    </div>
-                    <div class="radio">
-                        <label>
-                        {!! Form::radio('before_after', 'После', false, ['required' => '']) !!}
-                            Фото После обработки
-                        </label>                        
-                    </div>
-                    
+                    {!! Form::label('photo_after', trans('quickadmin.portfolio.fields.photo_after').'*', ['class' => 'control-label']) !!}
+                    {!! Form::hidden('photo_after', old('photo_after')) !!}
+                    {!! Form::file('photo_after', ['class' => 'form-control', 'required' => '']) !!}
+                    {!! Form::hidden('photo_after_max_size', 2) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('before_after'))
+                    @if($errors->has('photo_after'))
                         <p class="help-block">
-                            {{ $errors->first('before_after') }}
+                            {{ $errors->first('photo_after') }}
                         </p>
                     @endif
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('category_id', trans('quickadmin.portfolio.fields.category').'*', ['class' => 'control-label']) !!}
@@ -60,7 +53,7 @@
                     @endif
                 </div>
             </div>
-            
+
         </div>
     </div>
 

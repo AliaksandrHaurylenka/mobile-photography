@@ -48,10 +48,10 @@
 
         </div>
         <!-- Panel 1 -->
-        @for($i = 1; $i < 10; $i++)
+
         @if(isset($portfolio))
             @foreach($portfolio as $item)
-            
+
                 <div class="tab-pane fade" id="{{ $item->category->link }}" role="tabpanel">
                     <br>
 
@@ -63,7 +63,7 @@
 
                             <!-- Featured image -->
                             <div class="view overlay z-depth-1 zoom">
-                                <img src="/img/portfolio/{{ $item->where('id', $i)->value('photo') }}" class="img-fluid">
+                                <img src="/img/portfolio/{{ $item->photo }}" class="img-fluid">
                             </div>
 
                         </div>
@@ -74,7 +74,7 @@
 
                             <!-- Featured image -->
                             <div class="view overlay z-depth-1 zoom">
-                                <img src="/img/portfolio/{{ $item->where('id', $i+1)->value('photo') }}" class="img-fluid">
+                                <img src="/img/portfolio/{{ $item->photo_after }}" class="img-fluid">
                             </div>
 
                         </div>
@@ -84,10 +84,10 @@
                     <!-- Grid row -->
 
                 </div>
-                
+
             @endforeach
         @endif
-        @endfor
+
     </div>
     <!-- Tab panels -->
 

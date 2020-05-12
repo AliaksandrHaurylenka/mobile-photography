@@ -34,7 +34,7 @@
                         @endcan
 
                         <th>@lang('quickadmin.portfolio.fields.photo')</th>
-                        <th>@lang('quickadmin.portfolio.fields.before_after')</th>
+                        <th>@lang('quickadmin.portfolio.fields.photo_after')</th>
                         <th>@lang('quickadmin.portfolio.fields.category')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
@@ -52,9 +52,10 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
-                                {{--<td field-key='photo'>@if($portfolio->photo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $portfolio->photo) }}" target="_blank">Download file</a>@endif</td>--}}
                                 <td field-key='photo' style="width: 30%">@if($portfolio->photo)<a href="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo) }}" class="img-responsive"/></a>@endif</td>
-                                <td field-key='before_after'>{{ $portfolio->before_after }}</td>
+
+                                <td field-key='photo_after' style="width: 30%">@if($portfolio->photo_after)<a href="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo_after) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo_after) }}" class="img-responsive"/></a>@endif</td>
+
                                 <td field-key='category'>{{ $portfolio->category->title ?? '' }}</td>
 
                                 @if( request('show_deleted') == 1 )

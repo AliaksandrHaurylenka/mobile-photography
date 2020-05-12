@@ -17,7 +17,7 @@ class Portfolio extends Model
 
     const PATH = 'img/portfolio/';
 
-    protected $fillable = ['photo', 'before_after', 'category_id'];
+    protected $fillable = ['photo', 'photo_after', 'category_id'];
     protected $hidden = [];
 
 
@@ -44,6 +44,9 @@ class Portfolio extends Model
     {
       if ($this->photo != null) {
         unlink(public_path(Portfolio::PATH . $this->photo));
+      }
+      if ($this->photo_after != null) {
+        unlink(public_path(Portfolio::PATH . $this->photo_after));
       }
     }
 

@@ -23,8 +23,8 @@ class StorePortfoliosRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'photo' => 'required',
             'photo' => 'mimes:png,jpg,jpeg,gif|required',
+            'photo_after' => 'mimes:png,jpg,jpeg,gif|required',
             'category_id' => 'required',
         ];
     }
