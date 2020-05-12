@@ -1,5 +1,6 @@
 <?php
 Route::get('/', 'MainController@index')->name('main');
+Route::post('/topay', 'MainController@topay')->name('topay');
 
 // Backend...
 Route::get('/admin', function () { return redirect('/admin/home'); });

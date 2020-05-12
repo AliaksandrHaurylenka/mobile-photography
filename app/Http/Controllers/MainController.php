@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Main;
-use App\Section;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\DB;
@@ -33,8 +32,39 @@ class MainController extends Controller
         $categories = Category::all();
         $portfolio = Portfolio::all();
 
-        // dd($portfolio_before);
+        // $value = cache('key');
+
+        // dd($value);
 
         return view('site.index', compact('program', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function topay(Request $request)
+    {
+      //dd($request->all());
+
+      if ($request->isMethod('post')) {
+
+        $messages = [
+          'required' => 'Поле :attribute обязательно к заполнению',
+          'email' => 'Поле :attribute должно быть email адресом',
+        ];
+
+        $this->validate($request, [
+          'email' => 'required|email',
+          'name' => 'required|max:255',
+        ], $messages);
+
+        $data = $request->all();
+
+        
+
+        // return redirect()->back()->with('status', 'Ваше сообщение отправлено!');
+      }
     }
 }

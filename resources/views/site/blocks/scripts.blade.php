@@ -8,6 +8,7 @@
 <!--  MDB core JavaScript  -->
 <script src="/js/mdb.min.js"></script>
 <script src="/js/scripts.js"></script>
+<script src="/js/validation.js"></script>
 
 <script>
     //Animation init
