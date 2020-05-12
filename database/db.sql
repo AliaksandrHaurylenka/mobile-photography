@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `menu_socials` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `menu_socials_deleted_at_index` (`deleted_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы mobile-photography.menu_socials: ~3 rows (приблизительно)
 /*!40000 ALTER TABLE `menu_socials` DISABLE KEYS */;
@@ -132,10 +132,16 @@ CREATE TABLE IF NOT EXISTS `portfolios` (
   KEY `portfolios_deleted_at_index` (`deleted_at`),
   KEY `339557_5ea9645e9a322` (`category_id`),
   CONSTRAINT `339557_5ea9645e9a322` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.portfolios: ~1 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.portfolios: ~5 rows (приблизительно)
 /*!40000 ALTER TABLE `portfolios` DISABLE KEYS */;
+INSERT INTO `portfolios` (`id`, `photo`, `photo_after`, `created_at`, `updated_at`, `deleted_at`, `category_id`) VALUES
+	(8, '1589265128-1588252362327448.jpg', '1589265128-1588252362574602.jpg', '2020-05-12 06:32:08', '2020-05-12 06:32:08', NULL, 2),
+	(9, '1589265187-1588252361757707.jpg', '1589265187-158825236252639.jpg', '2020-05-12 06:33:07', '2020-05-12 06:33:07', NULL, 3),
+	(10, '1589265295-1588252362811293.jpg', '1589265295-1588252363144924.jpg', '2020-05-12 06:34:55', '2020-05-12 06:34:55', NULL, 4),
+	(11, '1589265360-158825237655707.jpg', '1589265360-1588252390988615.jpg', '2020-05-12 06:36:00', '2020-05-12 06:36:00', NULL, 5),
+	(12, '1589265397-1588252380865491.jpg', '1589265397-1588252390723248.jpg', '2020-05-12 06:36:37', '2020-05-12 06:36:37', NULL, 6);
 /*!40000 ALTER TABLE `portfolios` ENABLE KEYS */;
 
 -- Дамп структуры для таблица mobile-photography.prices
