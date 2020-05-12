@@ -16,7 +16,7 @@ class Create1588159317PortfoliosTable extends Migration
             Schema::create('portfolios', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('photo');
-                $table->string('before_after');
+                $table->string('photo_after');
                 
                 $table->timestamps();
                 $table->softDeletes();
