@@ -108,10 +108,16 @@ class PortfoliosController extends Controller
         $request = $this->saveFiles($request);
         $portfolio = Portfolio::findOrFail($id);
         if($_FILES['photo']['name']){
-            $portfolio->removeImg();
+            // $portfolio->removeImg();
+            if ($portfolio->photo != null) {
+                unlink(public_path(Portfolio::PATH . $portfolio->photo));
+            }
         }
         if($_FILES['photo_after']['name']){
-            $portfolio->removeImg();
+            // $portfolio->removeImg();
+            if ($portfolio->photo_after != null) {
+                unlink(public_path(Portfolio::PATH . $portfolio->photo_after));
+            }
         }
         $portfolio->update($request->all());
 

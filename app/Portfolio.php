@@ -42,10 +42,8 @@ class Portfolio extends Model
      */
     public function removeImg()
     {
-      if ($this->photo != null) {
+      if ($this->photo != null && $this->photo_after != null) {
         unlink(public_path(Portfolio::PATH . $this->photo));
-      }
-      if ($this->photo_after != null) {
         unlink(public_path(Portfolio::PATH . $this->photo_after));
       }
     }

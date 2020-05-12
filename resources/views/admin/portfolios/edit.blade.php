@@ -30,7 +30,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('photo_after', trans('quickadmin.portfolio.fields.photo_after').'*', ['class' => 'control-label']) !!}
                     {!! Form::hidden('photo_after', old('photo_after')) !!}
-                    {!! Form::file('photo_after', ['class' => 'form-control', 'required' => '']) !!}
+                    {!! Form::file('photo_after', ['class' => 'form-control']) !!}
                     {!! Form::hidden('photo_after_max_size', 2) !!}
                     <p class="help-block"></p>
                     @if($errors->has('photo_after'))

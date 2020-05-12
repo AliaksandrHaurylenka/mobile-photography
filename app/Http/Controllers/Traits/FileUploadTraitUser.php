@@ -20,6 +20,8 @@ trait FileUploadTraitUser
             $uploadPath = Price::PATH;
         }elseif($request->hasFile('photo') || $request->hasFile('photo_after')){
             $uploadPath = Portfolio::PATH;
+        }else{
+            return redirect()->route('admin.portfolios.index')->send();
         }
 
 
