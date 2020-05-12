@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 CREATE TABLE IF NOT EXISTS `portfolios` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `photo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `before_after` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_after` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -136,11 +136,6 @@ CREATE TABLE IF NOT EXISTS `portfolios` (
 
 -- Дамп данных таблицы mobile-photography.portfolios: ~1 rows (приблизительно)
 /*!40000 ALTER TABLE `portfolios` DISABLE KEYS */;
-INSERT INTO `portfolios` (`id`, `photo`, `before_after`, `created_at`, `updated_at`, `deleted_at`, `category_id`) VALUES
-	(1, '1589194206-1588252362327448.jpg', 'До', '2020-05-11 10:50:06', '2020-05-11 10:50:06', NULL, 2),
-	(2, '1589194231-1588252362574602.jpg', 'После', '2020-05-11 10:50:31', '2020-05-11 10:50:31', NULL, 2),
-	(3, '1589196629-1588252361757707.jpg', 'До', '2020-05-11 11:30:29', '2020-05-11 11:30:29', NULL, 3),
-	(4, '1589196644-158825236252639.jpg', 'После', '2020-05-11 11:30:44', '2020-05-11 11:30:44', NULL, 3);
 /*!40000 ALTER TABLE `portfolios` ENABLE KEYS */;
 
 -- Дамп структуры для таблица mobile-photography.prices
