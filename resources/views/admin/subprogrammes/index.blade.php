@@ -76,9 +76,6 @@
                                 </td>
                                 @else
                                 <td>
-                                    @can('subprogramme_view')
-                                    <a href="{{ route('admin.subprogrammes.show',[$subprogramme->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
-                                    @endcan
                                     @can('subprogramme_edit')
                                     <a href="{{ route('admin.subprogrammes.edit',[$subprogramme->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan
