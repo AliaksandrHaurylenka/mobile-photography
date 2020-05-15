@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы mobile-photography.migrations: ~18 rows (приблизительно)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
@@ -104,7 +104,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(15, '2020_04_29_143749_add_5ea9670d4cb62_relationships_to_user_table', 1),
 	(16, '2020_04_29_152541_create_1588163141_main_menus_table', 1),
 	(17, '2020_04_29_152846_create_1588163326_menu_socials_table', 1),
-	(18, '2020_04_29_153625_create_1588163785_prices_table', 1);
+	(18, '2020_04_29_153625_create_1588163785_prices_table', 1),
+	(20, '2020_05_14_113521_create_subprogrammes_table', 2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Дамп структуры для таблица mobile-photography.password_resets
@@ -174,10 +175,15 @@ CREATE TABLE IF NOT EXISTS `programs` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `programs_deleted_at_index` (`deleted_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.programs: ~0 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.programs: ~4 rows (приблизительно)
 /*!40000 ALTER TABLE `programs` DISABLE KEYS */;
+INSERT INTO `programs` (`id`, `lessons`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'Разбор приложений для обработки:', '2020-05-15 11:24:55', '2020-05-15 13:12:43', NULL),
+	(2, 'Твое идеальное селфи', '2020-05-15 11:25:33', '2020-05-15 13:12:49', NULL),
+	(3, 'Обработка фото во весь рост', '2020-05-15 11:25:46', '2020-05-15 13:12:53', NULL),
+	(4, 'Обработка портретного фото', '2020-05-15 11:25:57', '2020-05-15 13:12:58', NULL);
 /*!40000 ALTER TABLE `programs` ENABLE KEYS */;
 
 -- Дамп структуры для таблица mobile-photography.roles
@@ -195,6 +201,27 @@ INSERT INTO `roles` (`id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, 'Administrator (can create other users)', '2020-05-07 04:49:25', '2020-05-07 04:49:25'),
 	(2, 'Simple user', '2020-05-07 04:49:25', '2020-05-07 04:49:25');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+
+-- Дамп структуры для таблица mobile-photography.subprogrammes
+CREATE TABLE IF NOT EXISTS `subprogrammes` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `program_id` int(10) unsigned NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `subprogrammes_program_id_foreign` (`program_id`),
+  KEY `subprogrammes_deleted_at_index` (`deleted_at`),
+  CONSTRAINT `subprogrammes_program_id_foreign` FOREIGN KEY (`program_id`) REFERENCES `programs` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы mobile-photography.subprogrammes: ~2 rows (приблизительно)
+/*!40000 ALTER TABLE `subprogrammes` DISABLE KEYS */;
+INSERT INTO `subprogrammes` (`id`, `title`, `program_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'Ретушь кожи', 1, '2020-05-15 11:47:35', '2020-05-15 11:47:35', NULL),
+	(3, 'shgtrh', 1, '2020-05-15 13:08:29', '2020-05-15 13:09:16', '2020-05-15 13:09:16');
+/*!40000 ALTER TABLE `subprogrammes` ENABLE KEYS */;
 
 -- Дамп структуры для таблица mobile-photography.users
 CREATE TABLE IF NOT EXISTS `users` (
