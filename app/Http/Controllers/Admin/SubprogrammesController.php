@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\Admin\StorePortfoliosRequest;
+use App\Http\Requests\Admin\StoreSubprogrammesRequest;
 
 class SubprogrammesController extends Controller
 {
@@ -51,6 +51,25 @@ class SubprogrammesController extends Controller
         $programs = \App\Program::get()->pluck('lessons', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         return view('admin.subprogrammes.create', compact('programs'));
+    }
+
+    /**
+     * Store a newly created Subprogramme in storage.
+     *
+     * @param  \App\Http\Requests\StoreSubprogrammesRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreSubprogrammesRequest $request)
+    {
+        if (! Gate::allows('subprogramme_create')) {
+            return abort(401);
+        }
+        
+        $subprogramme = Subprogramme::create($request->all());
+
+
+
+        return redirect()->route('admin.subprogrammes.index');
     }
 
     

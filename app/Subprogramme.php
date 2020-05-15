@@ -29,7 +29,7 @@ class Subprogramme extends Model
         $this->attributes['program_id'] = $input ? $input : null;
     }
 
-    public function category()
+    public function program()
     {
         return $this->belongsTo(Program::class, 'program_id')->withTrashed();
     }

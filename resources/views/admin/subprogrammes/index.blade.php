@@ -51,7 +51,8 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
-                                <td field-key='lessons'>{{ $subprogramme->lessons }}</td>
+                                <td field-key='title'>{{ $subprogramme->title }}</td>
+                                <td field-key='program'>{{ $subprogramme->program->lessons ?? '' }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     @can('subprogramme_delete')
