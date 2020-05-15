@@ -66,9 +66,9 @@ CREATE TABLE IF NOT EXISTS `menu_socials` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `menu_socials_deleted_at_index` (`deleted_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы mobile-photography.menu_socials: ~3 rows (приблизительно)
+-- Дамп данных таблицы mobile-photography.menu_socials: ~4 rows (приблизительно)
 /*!40000 ALTER TABLE `menu_socials` DISABLE KEYS */;
 INSERT INTO `menu_socials` (`id`, `title`, `link`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 'facebook-f', 'facebook.com', '2020-05-07 05:15:36', '2020-05-07 05:15:36', NULL),

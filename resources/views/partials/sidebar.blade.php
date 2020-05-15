@@ -101,13 +101,35 @@
                 </ul>
             </li>@endcan
 
-            @can('program_access')
-            <li>
-                <a href="{{ route('admin.programs.index') }}">
+            @can('programs_access')
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-gears"></i>
-                    <span>@lang('quickadmin.program.title')</span>
+                    <span>@lang('quickadmin.programs.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
-            </li>@endcan
+                <ul class="treeview-menu">
+                    @can('program_access')
+                    <li>
+                        <a href="{{ route('admin.programs.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('quickadmin.program.title')</span>
+                        </a>
+                    </li>@endcan
+
+                    @can('subprogramme_access')
+                    <li>
+                        <a href="{{ route('admin.subprogramme.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('quickadmin.subprogramme.title')</span>
+                        </a>
+                    </li>@endcan
+
+                </ul>
+            </li>
+            @endcan
 
             @can('price_access')
             <li>

@@ -91,6 +91,11 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
 
+        // Auth gates for: Menu
+        Gate::define('programs_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+
         // Auth gates for: Program
         Gate::define('program_access', function ($user) {
             return in_array($user->role_id, [1]);

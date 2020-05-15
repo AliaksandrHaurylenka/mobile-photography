@@ -15,7 +15,7 @@ class Create1588159432CategoriesTable extends Migration
         if(! Schema::hasTable('categories')) {
             Schema::create('categories', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('title')->nullable();
+                $table->string('title');
                 $table->string('link')->nullable();
                 $table->string('active')->nullable();
                 
