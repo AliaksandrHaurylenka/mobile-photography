@@ -113,6 +113,23 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
 
+        // Auth gates for: Subprogram
+        Gate::define('subprogramme_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('subprogramme_create', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('subprogramme_edit', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('subprogramme_view', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('subprogramme_delete', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+
         // Auth gates for: Menu
         Gate::define('menu_access', function ($user) {
             return in_array($user->role_id, [1]);

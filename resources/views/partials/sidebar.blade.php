@@ -121,7 +121,7 @@
 
                     @can('subprogramme_access')
                     <li>
-                        <a href="{{ route('admin.subprogramme.index') }}">
+                        <a href="{{ route('admin.subprogrammes.index') }}">
                             <i class="fa fa-gears"></i>
                             <span>@lang('quickadmin.subprogramme.title')</span>
                         </a>

@@ -51,12 +51,26 @@ return [
 		],
 	],
 
-	'program' => [
+	'programs' => [
 		'title' => 'Программа',
+		'fields' => [
+		],
+	],
+
+	'program' => [
+		'title' => 'Основная программа',
 		'fields' => [
 			'lessons' => 'Уроки',
 		],
-    ],
+		],
+		
+	'subprogramme' => [
+		'title' => 'Подпрограммы',
+		'fields' => [
+			'title' => 'Подпрограмма',
+			'program' => 'Основная программа',
+		],
+		],
 
     'menu' => [
 		'title' => 'Меню',

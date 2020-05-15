@@ -37,5 +37,21 @@ class SubprogrammesController extends Controller
         return view('admin.subprogrammes.index', compact('subprogrammes'));
     }
 
+    /**
+     * Show the form for creating new subprogramme.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        if (! Gate::allows('subprogramme_create')) {
+            return abort(401);
+        }
+
+        $programs = \App\Program::get()->pluck('lessons', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+
+        return view('admin.subprogrammes.create', compact('programs'));
+    }
+
     
 }
