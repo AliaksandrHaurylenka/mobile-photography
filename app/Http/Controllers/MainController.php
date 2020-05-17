@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\DB;
 
 use App\Program;
+use App\Subprogramme;
 use App\MenuSocial;
 use App\MainMenu;
 use App\Price;
@@ -18,7 +19,9 @@ class MainController extends Controller
 {
     public function index()
     {
-        $program = Program::all();
+        $programs = Program::all();
+        $subprogrammes = Subprogramme::all();
+        // $sub_programs = Subprogramme::where('program_id', 1);
         $social = MenuSocial::all();
         $main_menu = MainMenu::all();
         $ancors = [
@@ -34,9 +37,9 @@ class MainController extends Controller
 
         // $value = cache('key');
 
-        // dd($value);
+        // dd($sub_programs);
 
-        return view('site.index', compact('program', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio'));
+        return view('site.index', compact('programs', 'subprogrammes', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio'));
     }
 
     /**
@@ -62,7 +65,7 @@ class MainController extends Controller
 
         $data = $request->all();
 
-        
+
 
         // return redirect()->back()->with('status', 'Ваше сообщение отправлено!');
       }

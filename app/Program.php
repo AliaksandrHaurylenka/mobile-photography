@@ -16,7 +16,10 @@ class Program extends Model
 
     protected $fillable = ['lessons'];
     protected $hidden = [];
-    
-    
-    
+
+    public function subprogrammes()
+    {
+        return $this->hasMany('App\Subprogramme');
+    }
+
 }

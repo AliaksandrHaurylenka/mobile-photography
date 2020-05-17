@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="{{ url('/admin/home') }}" class="logo"
+    <a href="{{ route('main') }}" target="_blank" class="logo"
        style="font-size: 16px;">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini">
@@ -19,9 +19,9 @@
             <span class="icon-bar"></span>
         </a>
 
-        
 
-        
+
+
 
     </nav>
 </header>
