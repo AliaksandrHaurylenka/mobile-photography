@@ -19,7 +19,7 @@ class Program extends Model
 
     public function subprogrammes()
     {
-        return $this->hasMany('App\Subprogramme');
+        return $this->hasMany(Subprogramme::class);
     }
 
 }

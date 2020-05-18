@@ -20,8 +20,8 @@ class MainController extends Controller
     public function index()
     {
         $programs = Program::all();
-        $subprogrammes = Subprogramme::all();
-        // $sub_programs = Subprogramme::where('program_id', 1);
+        // $subprogramme = Subprogramme::find(4);
+        $subprogramme = Subprogramme::all();
         $social = MenuSocial::all();
         $main_menu = MainMenu::all();
         $ancors = [
@@ -39,7 +39,7 @@ class MainController extends Controller
 
         // dd($sub_programs);
 
-        return view('site.index', compact('programs', 'subprogrammes', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio'));
+        return view('site.index', compact('programs', 'subprogramme', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio'));
     }
 
     /**

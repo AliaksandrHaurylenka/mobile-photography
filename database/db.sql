@@ -214,13 +214,17 @@ CREATE TABLE IF NOT EXISTS `subprogrammes` (
   KEY `subprogrammes_program_id_foreign` (`program_id`),
   KEY `subprogrammes_deleted_at_index` (`deleted_at`),
   CONSTRAINT `subprogrammes_program_id_foreign` FOREIGN KEY (`program_id`) REFERENCES `programs` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы mobile-photography.subprogrammes: ~2 rows (приблизительно)
 /*!40000 ALTER TABLE `subprogrammes` DISABLE KEYS */;
 INSERT INTO `subprogrammes` (`id`, `title`, `program_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 'Ретушь кожи', 1, '2020-05-15 11:47:35', '2020-05-15 11:47:35', NULL),
-	(3, 'shgtrh', 1, '2020-05-15 13:08:29', '2020-05-15 13:09:16', '2020-05-15 13:09:16');
+	(4, 'Удаление объектов', 1, '2020-05-18 08:27:39', '2020-05-18 08:27:39', NULL),
+	(5, 'Свето и цветокоррекция', 1, '2020-05-18 08:27:56', '2020-05-18 08:27:56', NULL),
+	(6, 'Пресеты Lightroom', 1, '2020-05-18 08:28:17', '2020-05-18 08:28:17', NULL),
+	(7, 'Изменение фона', 1, '2020-05-18 08:28:33', '2020-05-18 08:28:33', NULL),
+	(10, 'Сообщение, что добавлено новое событие от администратора', 3, '2020-05-18 09:41:43', '2020-05-18 09:41:43', NULL);
 /*!40000 ALTER TABLE `subprogrammes` ENABLE KEYS */;
 
 -- Дамп структуры для таблица mobile-photography.users
