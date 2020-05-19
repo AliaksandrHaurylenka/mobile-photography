@@ -14,7 +14,8 @@
                     
                     <li class="list-group-item"><span class="font-weight-bold">Урок {{ $loop->iteration }}. </span>{{ $program->lessons }}</li>
                    {{-- @if($subprogramme->program->id == $program->id)--}}
-                    @if($program->subprogrammes[$program->id]->program_id)
+                   {{-- @if($program->subprogrammes[$program->id]->program_id) --}}
+                    @if(!empty($program->subprogrammes))
                         <ul class="list-group list-group-flush">                               
                             @foreach($program->subprogrammes as $subprogramme)                                      
                                 <li class="list-group-item pl-5"><i class="fas fa-circle pr-2"></i> {{ $subprogramme->title }}</li>                                      
