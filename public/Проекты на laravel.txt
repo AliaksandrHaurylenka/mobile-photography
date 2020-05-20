@@ -1,0 +1,32 @@
+Admin-panel laravel порядок установки:
+1. Копируем содержимое папки adminpanel-laravel в проект;
+2. Создаем базу данных;
+3. В файле .env прописываем название базы данных и если нужно пользователя и пароль;
+4. Делаем миграции командой php artisan migrate;
+5. Командой php artisan db:seed добавляем в базу данных пользователя с
+email: admin@admin.com
+pass: password;
+6. Командой npm install устанавливаем пакеты packae.json
+7. Командой npm run dev проверяем работу webpack - сборщика пакетов
+
+QwikAdminPanel
+Т.к эта панель дает создать всего лишь 5 меню делаем следующее:
+1. создаем 5 меню и закидываем в проект;
+2. удаляем в панеле созданные меню;
+3. создаем новые меню, качаем;
+4. в проект добавляем файлы из:
+	app - Модели
+	app - Контроллеры
+	app/Request - Запросы
+	resources/views/admin - папки
+	database/migrations/ - миграции
+5. добавляем код в файлы:
+	app/Http/Providers/AuthServiceProvider.php
+	resources/lang/ru/quickadmin.php
+	resources/views/partials/sidebar.blade.php
+	routes/web.php
+
+Добавление полей в базу данных
+Если хотим, чтобы добавленные поля были виды:
+1. находим нужный вид
+2. редактируем index.php, create.php, edit.php, show.php, нужную модель, lang
