@@ -14,11 +14,7 @@ class PricesController extends Controller
 {
     use FileUploadTraitUser;
 
-    /**
-     * Display a listing of Price.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         if (! Gate::allows('price_access')) {
@@ -38,11 +34,6 @@ class PricesController extends Controller
         return view('admin.prices.index', compact('prices'));
     }
 
-    /**
-     * Show the form for creating new Price.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         if (! Gate::allows('price_create')) {
@@ -51,12 +42,7 @@ class PricesController extends Controller
         return view('admin.prices.create');
     }
 
-    /**
-     * Store a newly created Price in storage.
-     *
-     * @param  \App\Http\Requests\StorePricesRequest  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(StorePricesRequest $request)
     {
         if (! Gate::allows('price_create')) {
@@ -87,13 +73,7 @@ class PricesController extends Controller
         return view('admin.prices.edit', compact('price'));
     }
 
-    /**
-     * Update Price in storage.
-     *
-     * @param  \App\Http\Requests\UpdatePricesRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(UpdatePricesRequest $request, $id)
     {
         if (! Gate::allows('price_edit')) {
@@ -112,12 +92,7 @@ class PricesController extends Controller
     }
 
 
-    /**
-     * Display Price.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         if (! Gate::allows('price_view')) {
@@ -129,12 +104,7 @@ class PricesController extends Controller
     }
 
 
-    /**
-     * Remove Price from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         if (! Gate::allows('price_delete')) {
@@ -146,11 +116,7 @@ class PricesController extends Controller
         return redirect()->route('admin.prices.index');
     }
 
-    /**
-     * Delete all selected Price at once.
-     *
-     * @param Request $request
-     */
+    
     public function massDestroy(Request $request)
     {
         if (! Gate::allows('price_delete')) {
@@ -166,12 +132,7 @@ class PricesController extends Controller
     }
 
 
-    /**
-     * Restore Price from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function restore($id)
     {
         if (! Gate::allows('price_delete')) {
@@ -183,12 +144,7 @@ class PricesController extends Controller
         return redirect()->route('admin.prices.index');
     }
 
-    /**
-     * Permanently delete Price from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function perma_del($id)
     {
         if (! Gate::allows('price_delete')) {

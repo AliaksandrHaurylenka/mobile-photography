@@ -21,7 +21,7 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('roles', 'Admin\RolesController');
     Route::post('roles_mass_destroy', ['uses' => 'Admin\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
@@ -62,6 +62,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('prices_mass_destroy', ['uses' => 'Admin\PricesController@massDestroy', 'as' => 'prices.mass_destroy']);
     Route::post('prices_restore/{id}', ['uses' => 'Admin\PricesController@restore', 'as' => 'prices.restore']);
     Route::delete('prices_perma_del/{id}', ['uses' => 'Admin\PricesController@perma_del', 'as' => 'prices.perma_del']);
+
+    Route::resource('photo_image_pages', 'Admin\PhotoImagePageController');
+    Route::post('photo_image_pages_mass_destroy', ['uses' => 'Admin\PhotoImagePageController@massDestroy', 'as' => 'photo_image_pages.mass_destroy']);
+    Route::post('photo_image_pages_restore/{id}', ['uses' => 'Admin\PhotoImagePageController@restore', 'as' => 'photo_image_pages.restore']);
+    Route::delete('photo_image_pages_perma_del/{id}', ['uses' => 'Admin\PhotoImagePageController@perma_del', 'as' => 'photo_image_pages.perma_del']);
 
 
 

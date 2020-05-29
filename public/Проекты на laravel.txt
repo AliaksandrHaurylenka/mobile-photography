@@ -30,3 +30,28 @@ QwikAdminPanel
 Если хотим, чтобы добавленные поля были виды:
 1. находим нужный вид
 2. редактируем index.php, create.php, edit.php, show.php, нужную модель, lang
+
+
+Последовательность создания меню в QwikAdminPanel и связи с базой:
+1. Создаем ресурс командой: php artisan make:model Project -mcr;
+2. Переносим созданный контроллер в папку Admin и в нем дополнительно прописываем:
+		namespace App\Http\Controllers\Admin;
+		
+		use Illuminate\Support\Facades\Gate;
+		use App\Http\Controllers\Controller;
+		use App\Http\Requests\Admin\StoreCategoriesRequest;
+		use App\Http\Requests\Admin\UpdateCategoriesRequest;
+3. В созданной миграции прописываем нужные поля для создаваемой таблицы;
+4. Запускаем миграцию: php artisan migrate;
+5. Создаем папку по имени таблицы в папке views->admin;
+6. Открываем resources->lang->quickadmin.php и прописываем название полей таблицы;
+7. Копируем какой-нибудь index.php файл из views->admin->папка и по аналогии редактируем его по названию таблицы;
+8. Редактируем модель по аналогии с другими моделями;
+9. Прописывае роуты;
+10. Добавляем недостающие методы в контроллер: massDestroy, restore, perma_del;
+11. В views->partials->sidebar.blade.php добавляем меню;
+12. Добавляем код в app/Http/Providers/AuthServiceProvider.php;
+13. Редактируем методы в контроллере для каждого действия и добавляем необходимые виды;
+14. Добавляем файлы в app/Http/Controllers/Request/Admin запросы по имени модели;
+15. При необходимости добавляем в контроллер связь с трейтом (напр. app/Http/Controllers/Traits/FileUploadTraitUser);
+16. 

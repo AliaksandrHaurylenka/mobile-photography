@@ -72,6 +72,14 @@
                 </ul>
             </li>@endcan
 
+            @can('photo_image_page_access')
+            <li>
+                <a href="{{ route('admin.photo_image_pages.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span>@lang('quickadmin.photo_image_page.title')</span>
+                </a>
+            </li>@endcan
+
             @can('portfolio_management_access')
             <li class="treeview">
                 <a href="#">

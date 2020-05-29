@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\Price;
 use App\Portfolio;
+use App\PhotoImagePage;
 
 trait FileUploadTraitUser
 {
@@ -18,10 +19,13 @@ trait FileUploadTraitUser
 
         if($request->hasFile('flag')){
             $uploadPath = Price::PATH;
-        }elseif($request->hasFile('photo') || $request->hasFile('photo_after')){
+        }elseif($request->hasFile('photo') && $request->hasFile('photo_after')){
             $uploadPath = Portfolio::PATH;
+        }elseif($request->hasFile('photo')){
+            $uploadPath = PhotoImagePage::PATH;
         }else{
-            return redirect()->route('admin.portfolios.index')->send();
+            // return redirect()->route('admin.portfolios.index')->send();
+            return redirect()->route('admin.home')->send();
         }
 
 

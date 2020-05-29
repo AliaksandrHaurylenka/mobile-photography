@@ -186,5 +186,22 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
 
+        // Auth gates for: Price
+        Gate::define('photo_image_page_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('photo_image_page_create', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('photo_image_page_edit', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('photo_image_page_view', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('photo_image_page_delete', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+
     }
 }

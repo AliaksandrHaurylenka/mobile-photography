@@ -37,9 +37,9 @@
                         <th>@lang('quickadmin.portfolio.fields.photo_after')</th>
                         <th>@lang('quickadmin.portfolio.fields.category')</th>
                         @if( request('show_deleted') == 1 )
-                        <th>&nbsp;</th>
+                            <th>&nbsp;</th>
                         @else
-                        <th>&nbsp;</th>
+                            <th>&nbsp;</th>
                         @endif
                     </tr>
                 </thead>
