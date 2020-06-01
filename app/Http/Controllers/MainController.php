@@ -21,7 +21,6 @@ class MainController extends Controller
     public function index()
     {
         $programs = Program::all();
-        // $subprogramme = Subprogramme::find(4);
         $subprogramme = Subprogramme::all();
         $social = MenuSocial::all();
         $main_menu = MainMenu::all();
@@ -34,8 +33,13 @@ class MainController extends Controller
         ];
         $prices = Price::all();
         $categories = Category::all();
-        $portfolio = Portfolio::all();
-        // $main_images = PhotoImagePage::all();
+        // $portfolio = Portfolio::all();
+        $portfolio = DB::table('portfolios')->whereNotNull('category_id')->get();
+        // dd($portfolio);
+        $mobil_photo = [
+          'before' => DB::table('portfolios')->whereNull('category_id')->value('photo'),
+          'after' => DB::table('portfolios')->whereNull('category_id')->value('photo_after'),
+        ];
         $main_images = [
           'main' => DB::table('photo_image_pages')->where('section', 'Главное изображение')->value('photo'),
           'block1' => DB::table('photo_image_pages')->where('section', 'Блок 1')->value('photo'),
@@ -46,7 +50,7 @@ class MainController extends Controller
 
         // dd($sub_programs);
 
-        return view('site.index', compact('programs', 'subprogramme', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio', 'main_images'));
+        return view('site.index', compact('programs', 'subprogramme', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio', 'main_images', 'mobil_photo'));
     }
 
     /**

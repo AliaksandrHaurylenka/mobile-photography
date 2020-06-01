@@ -25,7 +25,7 @@ class StorePortfoliosRequest extends FormRequest
         return [
             'photo' => 'mimes:png,jpg,jpeg,gif|required',
             'photo_after' => 'mimes:png,jpg,jpeg,gif|required',
-            'category_id' => 'required',
+            // 'category_id' => 'required',
         ];
     }
 }

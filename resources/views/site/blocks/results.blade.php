@@ -6,11 +6,13 @@
 <div class="row text-center">
     <div class="col-lg-6 mb-5">
         <h2>До</h2>
-        <img src="/img/portfolio/1588252010172213.png" class="img-fluid" alt="">
+        <!-- <img src="/img/portfolio/1588252010172213.png" class="img-fluid" alt=""> -->
+        <img src="/img/portfolio/{{$mobil_photo['before']}}" class="img-fluid" alt="">
     </div>
     <div class="col-lg-6 mb-5">
         <h2>После</h2>
-        <img src="/img/portfolio/1588252010595789.png" class="img-fluid" alt="">
+        <!-- <img src="/img/portfolio/1588252010595789.png" class="img-fluid" alt=""> -->
+        <img src="/img/portfolio/{{$mobil_photo['after']}}" class="img-fluid" alt="">
     </div>
 </div>
 

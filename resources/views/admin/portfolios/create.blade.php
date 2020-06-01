@@ -41,8 +41,8 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('category_id', trans('quickadmin.portfolio.fields.category').'*', ['class' => 'control-label']) !!}
-                    {!! Form::select('category_id', $categories, old('category_id'), ['class' => 'form-control select2', 'required' => '']) !!}
+                    {!! Form::label('category_id', trans('quickadmin.portfolio.fields.category'), ['class' => 'control-label']) !!}
+                    {!! Form::select('category_id', $categories, old('category_id'), ['class' => 'form-control select2']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('category_id'))
                         <p class="help-block">
