@@ -67,13 +67,12 @@ class PhotoImagePageController extends Controller
     }
 
     
-    public function update(Request $request, PhotoImagePage $photoImagePage)
+    public function update(UpdatePhotoImagePagesRequest $request, PhotoImagePage $photoImagePage)
     {
         if (! Gate::allows('photo_image_page_edit')) {
             return abort(401);
         }
         $request = $this->saveFiles($request);
-        // $price = PhotoImagePage::findOrFail($id);
         if($_FILES['photo']['name']){
             $photoImagePage->removeImg();
         }

@@ -36,7 +36,7 @@
 </nav>
 
 <!-- Intro Section -->
-<div id="{{$ancors['home']}}" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url(img/1588251986707263.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+<div id="{{$ancors['home']}}" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('img/{{$main_images["main"]}}'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
     <div class="mask rgba-black-light"></div>
 </div>
 

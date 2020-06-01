@@ -14,6 +14,7 @@ use App\MainMenu;
 use App\Price;
 use App\Category;
 use App\Portfolio;
+use App\PhotoImagePage;
 
 class MainController extends Controller
 {
@@ -34,12 +35,18 @@ class MainController extends Controller
         $prices = Price::all();
         $categories = Category::all();
         $portfolio = Portfolio::all();
+        // $main_images = PhotoImagePage::all();
+        $main_images = [
+          'main' => DB::table('photo_image_pages')->where('section', 'Главное изображение')->value('photo'),
+          'block1' => DB::table('photo_image_pages')->where('section', 'Блок 1')->value('photo'),
+          'block2' => DB::table('photo_image_pages')->where('section', 'Блок 2')->value('photo'),
+        ];
 
         // $value = cache('key');
 
         // dd($sub_programs);
 
-        return view('site.index', compact('programs', 'subprogramme', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio'));
+        return view('site.index', compact('programs', 'subprogramme', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio', 'main_images'));
     }
 
     /**
