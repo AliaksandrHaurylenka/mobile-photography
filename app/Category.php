@@ -23,11 +23,6 @@ class Category extends Model
     protected $hidden = [];
 
 
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
     public function sluggable()
     {
       return [
@@ -35,6 +30,11 @@ class Category extends Model
           'source' => 'title',
         ],
       ];
+    }
+
+    public function portfolio()
+    {
+      return $this->hasMany(Portfolio::class);
     }
 
 
