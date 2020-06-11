@@ -32,12 +32,8 @@ class MainController extends Controller
             'reviews' => DB::table('main_menus')->where('title', 'Отзывы')->value('link')
         ];
         $prices = Price::all();
-        // $categories = Category::all();
-        // $portfolio = Portfolio::all();
-        // $portfolio = DB::table('portfolios')->whereNotNull('category_id')->get();
-        $category = Category::find(2);
-        $portfolio = $category->portfolio;
-        // dd($portfolio);
+        $categories = Category::all();
+        $portfolio = Portfolio::whereNotNull('category_id')->get();        
         $mobil_photo = [
           'before' => DB::table('portfolios')->whereNull('category_id')->value('photo'),
           'after' => DB::table('portfolios')->whereNull('category_id')->value('photo_after'),

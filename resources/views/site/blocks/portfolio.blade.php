@@ -30,7 +30,6 @@
     <div class="tab-content pt-0">
 
         <!-- Panel 1 -->
-        <!-- <div class="tab-pane fade show in active text-center" id="panel31" role="tabpanel"> -->
         <div class="tab-pane fade show in active text-center" id="{{App\Category::find(1)->link}}" role="tabpanel">
             <br>
 
