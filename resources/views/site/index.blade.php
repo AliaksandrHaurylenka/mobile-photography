@@ -40,9 +40,9 @@
   @include('site.blocks.topay')
 @endsection
 
-{{--@section('comments')
+@section('comments')
   @include('site.blocks.comments')
-@endsection---}}
+@endsection
 
 @section('footer')
   @include('site.blocks.footer')
