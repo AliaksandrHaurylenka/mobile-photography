@@ -37,7 +37,7 @@ class MainController extends Controller
         // $portfolio = DB::table('portfolios')->whereNotNull('category_id')->get();
         $category = Category::find(2);
         $portfolio = $category->portfolio;
-        dd($portfolio);
+        // dd($portfolio);
         $mobil_photo = [
           'before' => DB::table('portfolios')->whereNull('category_id')->value('photo'),
           'after' => DB::table('portfolios')->whereNull('category_id')->value('photo_after'),
