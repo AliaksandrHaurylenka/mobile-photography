@@ -11,11 +11,7 @@ use App\Http\Requests\Admin\UpdateCategoriesRequest;
 
 class CategoriesController extends Controller
 {
-    /**
-     * Display a listing of Category.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         if (! Gate::allows('category_access')) {

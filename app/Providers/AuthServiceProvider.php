@@ -203,5 +203,22 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
 
+        // Auth gates for: Comment
+        Gate::define('comment_access', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('comment_create', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('comment_edit', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('comment_view', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+        Gate::define('comment_delete', function ($user) {
+            return in_array($user->role_id, [1]);
+        });
+
     }
 }

@@ -145,7 +145,20 @@
                     <i class="fa fa-gears"></i>
                     <span>@lang('quickadmin.price.title')</span>
                 </a>
-            </li>@endcan
+            </li>
+            @endcan
+
+            @can('comment_access')
+            <li>
+                <a href="{{ route('admin.comments.index') }}">
+                    <i class="fa fa-commenting"></i>
+                    <span>@lang('quickadmin.comment.title')</span>
+                    <span class="pull-right-container">
+                        {{--<small class="label pull-right bg-green">{{$newsCommentsCount}}</small>--}}
+                    </span>
+                </a>
+            </li>
+            @endcan
 
 
 
