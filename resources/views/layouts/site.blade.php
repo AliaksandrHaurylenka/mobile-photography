@@ -39,6 +39,8 @@
 
         @yield('comments')
 
+        @yield('comments-form')
+
     </main>
     <!-- Main content -->
     @yield('footer')

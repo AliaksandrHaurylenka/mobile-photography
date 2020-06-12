@@ -44,6 +44,10 @@
   @include('site.blocks.comments')
 @endsection
 
+@section('comments-form')
+  @include('site.blocks.comments-form')
+@endsection
+
 @section('footer')
   @include('site.blocks.footer')
 @endsection
