@@ -41,45 +41,33 @@ class CommentController extends Controller
     }
 
     
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
     public function show(Comment $comment)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Comment $comment)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Comment $comment)
     {
         //
     }
 
     
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        //
+        if (! Gate::allows('comment_delete')) {
+            return abort(401);
+        }
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+
+        return redirect()->route('admin.comments.index');
     }
 
     public function massDestroy(Request $request)
@@ -103,8 +91,8 @@ class CommentController extends Controller
         if (! Gate::allows('comment_delete')) {
             return abort(401);
         }
-        $main_menu = Comment::onlyTrashed()->findOrFail($id);
-        $main_menu->restore();
+        $comment = Comment::onlyTrashed()->findOrFail($id);
+        $comment->restore();
 
         return redirect()->route('admin.comments.index');
     }
@@ -115,8 +103,9 @@ class CommentController extends Controller
         if (! Gate::allows('comment_delete')) {
             return abort(401);
         }
-        $main_menu = Comment::onlyTrashed()->findOrFail($id);
-        $main_menu->forceDelete();
+        $comment = Comment::onlyTrashed()->findOrFail($id);
+        $comment->forceDelete();
+        $comment->remove();
 
         return redirect()->route('admin.comments.index');
     }

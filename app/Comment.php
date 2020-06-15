@@ -34,4 +34,25 @@ class Comment extends Model
 
         return $this->disAllow();
     }
+
+    /**
+     * Удаление фото при удалении записи в базе
+     * Функция используется в update
+     */
+    public function removeImg()
+    {
+      if ($this->avatar != null) {
+        unlink(public_path(Comment::PATH . $this->avatar));
+      }
+    }
+
+    /**
+     * Удаление фото при удалении записи в базе
+     * Функция используется в perma_del
+     */
+    public function remove()
+    {
+      $this->removeImg();
+      $this->forceDelete();
+    }
 }
