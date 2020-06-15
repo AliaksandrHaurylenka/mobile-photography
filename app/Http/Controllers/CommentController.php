@@ -6,32 +6,41 @@ use App\Comment;
 // use App\User;
 // use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Traits\FileUploadTraitUser;
+// use Symfony\Component\HttpFoundation\File\UploadedFile; // для второго варианта
+
 // use Auth;
 
 class CommentController extends Controller
 {
+    use FileUploadTraitUser;
+    
+    
+
     public function store(Request $request)
     {
         $this->validate($request, [
-            'comment' => 'required',
-            'name' => 'required',
+            'comment' => 'required|string|max:5000',
+            'name' => 'required|string|max:255',
+            'avatar' => 'mimes:png,jpg,jpeg,gif',
         ]);
         
 
-        $comment = new Comment();
-        $comment->name = $request->get('name');
-        $comment->comment = $request->get('comment');
-        $comment->avatar = $request->get('avatar');
-
-        $comment->disAllow();
+        $request = $this->saveFiles($request);
+        $comment = Comment::create($request->all());
         
+            // Второй вариант загрузки файла
+        // $image = $request->file('avatar');
+        // $avatarName = $image->getClientOriginalName();
+        // $image->move(public_path('img/comments/avatar'), $avatarName);
 
-        
-        // Comment::mailNotification($comment);
-
-        // dd($comment->user_id);
-        $comment->save();
+        // $comment = new Comment();
+        // $comment->name = $request->get('name');
+        // $comment->comment = $request->get('comment');
+        // $comment->avatar = $avatarName;
+        // $comment->save();
 
         return redirect()->back()->with('status', 'Спасибо. Ваш комментарий скоро будет опубликован.');
+        // return response()->json(['name' => 'Abigail', 'state' => 'CA']);
     }
 }

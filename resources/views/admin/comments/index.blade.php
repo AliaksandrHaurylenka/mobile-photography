@@ -53,9 +53,13 @@
                   <td></td>@endif
               @endcan
 
-              <td field-key='text'>{!! $comment->name !!}</td>
-              <td field-key='post_id'>{{ $comment->avatar }}</td>
-              <td field-key='post_id'>{{ $comment->comment }}</td>
+              <td field-key='name'>{!! $comment->name !!}</td>
+              <td field-key='avatar' style="width: 10%">
+                @if($comment->avatar)
+                  <img src="{{ asset(env('UPLOAD_PATH'). App\Comment::PATH . $comment->avatar) }}" class="img-responsive">
+                @endif
+              </td>
+              <td field-key='comment'>{{ $comment->comment }}</td>
               
 
               @if( request('show_deleted') == 1 )

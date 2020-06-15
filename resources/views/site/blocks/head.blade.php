@@ -12,6 +12,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('css/mdb_pro.min.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <style>
         html,

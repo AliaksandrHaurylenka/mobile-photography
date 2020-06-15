@@ -13,7 +13,7 @@
         @endif
         @include('admin.errors')
 
-        <form action="/comment" method="post">
+        <form action="/comment" method="post" enctype="multipart/form-data">
           {{ csrf_field() }}
           <div class="form-group">
             <input type="text" class="form-control" name="name" value="{{old('name')}}" required>
@@ -22,10 +22,12 @@
           <!-- Comment -->
           <div class="form-group">
             <textarea class="form-control" rows="5" name="comment" value="{{old('comment')}}" required></textarea>
-          </div>
+          </div>       
 
           <div class="form-group">
-            <input type="text" class="form-control" name="avatar" value="{{old('avatar')}}" required>
+            <label for="avatar">Аватар</label>
+            <br>
+            <input type="file" name="avatar" id="avatar">
           </div>
 
           <div class="text-center mt-4">

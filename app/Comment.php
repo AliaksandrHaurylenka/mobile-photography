@@ -12,6 +12,8 @@ class Comment extends Model
     public const STATUS_WAIT = 'wait';
     public const STATUS_ACTIVE = 'active';
 
+    const  PATH = 'img/comments/avatar/';
+
     protected $fillable = ['name', 'avatar', 'comment'];
     protected $hidden = [];
 

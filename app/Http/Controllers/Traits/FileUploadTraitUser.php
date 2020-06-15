@@ -7,6 +7,7 @@ use Intervention\Image\Facades\Image;
 use App\Price;
 use App\Portfolio;
 use App\PhotoImagePage;
+use App\Comment;
 
 trait FileUploadTraitUser
 {
@@ -23,8 +24,9 @@ trait FileUploadTraitUser
             $uploadPath = Portfolio::PATH;
         }elseif($request->hasFile('photo')){
             $uploadPath = PhotoImagePage::PATH;
+        }elseif($request->hasFile('avatar')){
+            $uploadPath = Comment::PATH;
         }else{
-            // return redirect()->route('admin.portfolios.index')->send();
             return redirect()->route('admin.home')->send();
         }
 
