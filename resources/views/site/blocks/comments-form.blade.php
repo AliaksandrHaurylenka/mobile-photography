@@ -15,12 +15,17 @@
 
         <form action="/comment" method="post">
           {{ csrf_field() }}
-          <!-- <input type="hidden" name="post_id" value=''> -->
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" value="{{old('name')}}" required>
+          </div>
 
           <!-- Comment -->
           <div class="form-group">
-            <textarea class="form-control" id="replyFormComment" rows="5" name="message"
-                      value="{{old('message')}}" required></textarea>
+            <textarea class="form-control" rows="5" name="comment" value="{{old('comment')}}" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" name="avatar" value="{{old('avatar')}}" required>
           </div>
 
           <div class="text-center mt-4">

@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->string('name');
             $table->string('avatar');
             $table->string('comment');
+            $table->string('status');
 
             $table->timestamps();
             $table->softDeletes();

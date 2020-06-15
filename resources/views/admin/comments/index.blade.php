@@ -3,9 +3,6 @@
 
 @section('content')
   <h3 class="page-title">@lang('quickadmin.comment.title')</h3>
-  @can('comment_create')
-    {{--<p><a href="{{ route('admin.comments.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a></p>--}}
-  @endcan
 
   @can('comment_delete')
     <p>
@@ -65,19 +62,19 @@
                 <td>
                   @can('comment_delete')
                     {!! Form::open(array(
-'style' => 'display: inline-block;',
-'method' => 'POST',
-'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-'route' => ['admin.comments.restore', $comment->id])) !!}
+                      'style' => 'display: inline-block;',
+                      'method' => 'POST',
+                      'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                      'route' => ['admin.comments.restore', $comment->id])) !!}
                     {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
                     {!! Form::close() !!}
                   @endcan
                   @can('comment_delete')
                     {!! Form::open(array(
-'style' => 'display: inline-block;',
-'method' => 'DELETE',
-'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-'route' => ['admin.comments.perma_del', $comment->id])) !!}
+                      'style' => 'display: inline-block;',
+                      'method' => 'DELETE',
+                      'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                      'route' => ['admin.comments.perma_del', $comment->id])) !!}
                     {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                     {!! Form::close() !!}
                   @endcan
@@ -85,25 +82,26 @@
               @else
                 <td>
 
-                  @if(\Auth::user()->role_id == 1)
-                    @if($comment->status == 1)
+                  {{--@if(\Auth::user()->role_id == 1)--}}
+                    @if($comment->status == 'active')
                       {{--<a href="/admin/ad/toggle/{{$comment->id}}" class="fa fa-lock" title="Запретить"></a>--}}
                       <a href="/admin/comment/toggle/{{$comment->id}}" class="btn btn-xs btn-success">Запретить</a>
                     @else
                       {{--<a href="/admin/ad/toggle/{{$comment->id}}" class="fa fa-thumbs-o-up" title="Опубликовать"></a>--}}
                       <a href="/admin/comment/toggle/{{$comment->id}}" class="btn btn-xs btn-warning">Опубликовать</a>
                     @endif
-                  @endif
+                  {{--@endif--}}
 
                   @can('comment_edit')
                     <a href="{{ route('admin.comments.edit',[$comment->id]) }}"
-                       class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>                                 @endcan
+                       class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
+                  @endcan
                   @can('comment_delete')
                     {!! Form::open(array(
-                                                            'style' => 'display: inline-block;',
-                                                            'method' => 'DELETE',
-                                                            'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
-                                                            'route' => ['admin.comments.destroy', $comment->id])) !!}
+                      'style' => 'display: inline-block;',
+                      'method' => 'DELETE',
+                      'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                      'route' => ['admin.comments.destroy', $comment->id])) !!}
                     {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                     {!! Form::close() !!}
                   @endcan
@@ -120,13 +118,12 @@
       </table>
     </div>
   </div>
-@stop
+  @stop
 
-@section('javascript')
-  <script>
-    @can('comment_delete')
+  @section('javascript')
+    <script>
+      @can('comment_delete')
         @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.comments.mass_destroy') }}'; @endif
-    @endcan
-
-  </script>
+      @endcan
+    </script>
 @endsection

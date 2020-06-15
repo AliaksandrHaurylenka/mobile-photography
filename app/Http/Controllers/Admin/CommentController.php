@@ -9,6 +9,16 @@ use App\Http\Controllers\Controller;
 
 class CommentController extends Controller
 {
+    public function toggle($id)
+    {
+        $comment = Comment::find($id);
+        $comment->toggleStatus();
+
+        // Comment::mailNotification($comment);
+        // Subscribe::mailNotificationComment($comment);
+
+        return redirect()->back();
+    }
     
     public function index()
     {
@@ -29,26 +39,7 @@ class CommentController extends Controller
         return view('admin.comments.index', compact('comments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    
 
     /**
      * Display the specified resource.

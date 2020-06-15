@@ -1,6 +1,7 @@
 <?php
 Route::get('/', 'MainController@index')->name('main');
 Route::post('/topay', 'MainController@topay')->name('topay');
+Route::post('/comment', 'CommentController@store');
 
 // Backend...
 Route::get('/admin', function () { return redirect('/admin/home'); });
@@ -69,6 +70,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::delete('photo_image_pages_perma_del/{id}', ['uses' => 'Admin\PhotoImagePageController@perma_del', 'as' => 'photo_image_pages.perma_del']);
 
     Route::resource('comments', 'Admin\CommentController');
+    Route::get('/comment/toggle/{id}', 'Admin\CommentController@toggle');
     Route::post('comments_mass_destroy', ['uses' => 'Admin\CommentController@massDestroy', 'as' => 'comments.mass_destroy']);
     Route::post('comments_restore/{id}', ['uses' => 'Admin\CommentController@restore', 'as' => 'comments.restore']);
     Route::delete('comments_perma_del/{id}', ['uses' => 'Admin\CommentController@perma_del', 'as' => 'comments.perma_del']);
