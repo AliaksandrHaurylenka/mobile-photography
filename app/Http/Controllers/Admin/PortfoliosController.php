@@ -85,14 +85,10 @@ class PortfoliosController extends Controller
         // dd('dfgdfgg');
         $portfolio = Portfolio::findOrFail($id);
         if($_FILES['photo']['name']){
-            if ($portfolio->photo != null) {
-                unlink(public_path(Portfolio::PATH . $portfolio->photo));
-            }
+            $portfolio->removePhoto('photo');
         }
         if($_FILES['photo_after']['name']){
-            if ($portfolio->photo_after != null) {
-                unlink(public_path(Portfolio::PATH . $portfolio->photo_after));
-            }
+            $portfolio->removePhoto('photo_after');
         }
         
         $portfolio->update($request->all());
