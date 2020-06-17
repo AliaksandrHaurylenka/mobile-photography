@@ -28,7 +28,7 @@ class PortfoliosController extends Controller
             }
             $portfolios = Portfolio::onlyTrashed()->get();
         } else {
-            $portfolios = Portfolio::select(['id', 'photo', 'photo_after'])->latest()->get();
+            $portfolios = Portfolio::select(['id', 'photo', 'photo_after', 'category_id'])->latest()->get();
         }
 
         return view('admin.portfolios.index', compact('portfolios'));
@@ -81,13 +81,14 @@ class PortfoliosController extends Controller
         if (! Gate::allows('portfolio_edit')) {
             return abort(401);
         }
-        $request = $this->saveFiles($request);
-        // dd('dfgdfgg');
+        
         $portfolio = Portfolio::findOrFail($id);
         if($_FILES['photo']['name']){
+            $request = $this->saveFiles($request);
             $portfolio->removePhoto('photo');
         }
         if($_FILES['photo_after']['name']){
+            $request = $this->saveFiles($request);
             $portfolio->removePhoto('photo_after');
         }
         

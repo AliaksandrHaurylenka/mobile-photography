@@ -78,6 +78,8 @@ class PhotoImagePageController extends Controller
         }
         $photoImagePage->update($request->all());
 
+        // dd($photoImagePage);
+
         return redirect()->route('admin.photo_image_pages.index');
     }
 

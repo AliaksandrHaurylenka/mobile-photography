@@ -20,13 +20,23 @@ trait FileUploadTraitUser
 
         if($request->hasFile('flag')){
             $uploadPath = Price::PATH;
-        }elseif($request->hasFile('photo') && $request->hasFile('photo_after')){
+        }
+        elseif(($request->hasFile('photo') && $request->hasFile('photo_after')) ||
+                     ($request->hasFile('photo') && $request->has('category_id')) ||
+                     ($request->hasFile('photo_after') && $request->has('category_id')))
+        {
             $uploadPath = Portfolio::PATH;
-        }elseif($request->hasFile('photo')){
+        }
+        elseif($request->hasFile('photo') && $request->has('section'))
+        {
             $uploadPath = PhotoImagePage::PATH;
-        }elseif($request->hasFile('avatar')){
+        }
+        elseif($request->hasFile('avatar'))
+        {
             $uploadPath = Comment::PATH;
-        }else{
+        }
+        else
+        {
             return redirect()->route('admin.home')->send();
         }
 
