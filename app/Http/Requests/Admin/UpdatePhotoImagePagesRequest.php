@@ -23,7 +23,7 @@ class UpdatePhotoImagePagesRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'mimes:png,jpg,jpeg,gif|required',
+            'photo' => 'mimes:png,jpg,jpeg,gif',
             'section' => 'required',
         ];
     }

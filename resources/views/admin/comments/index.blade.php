@@ -56,7 +56,7 @@
               <td field-key='name'>{!! $comment->name !!}</td>
               <td field-key='avatar' style="width: 10%">
                 @if($comment->avatar)
-                  <img src="{{ asset(env('UPLOAD_PATH'). App\Comment::PATH . $comment->avatar) }}" class="img-responsive">
+                  <img src="{{ asset(env('UPLOAD_PATH').App\Comment::PATH . $comment->avatar) }}" class="img-responsive">
                 @endif
               </td>
               <td field-key='comment'>{{ $comment->comment }}</td>
@@ -88,13 +88,15 @@
 
                   {{--@if(\Auth::user()->role_id == 1)--}}
                     @if($comment->status == 'active')
-                      {{--<a href="/admin/ad/toggle/{{$comment->id}}" class="fa fa-lock" title="Запретить"></a>--}}
                       <a href="/admin/comment/toggle/{{$comment->id}}" class="btn btn-xs btn-success">Запретить</a>
                     @else
-                      {{--<a href="/admin/ad/toggle/{{$comment->id}}" class="fa fa-thumbs-o-up" title="Опубликовать"></a>--}}
                       <a href="/admin/comment/toggle/{{$comment->id}}" class="btn btn-xs btn-warning">Опубликовать</a>
                     @endif
                   {{--@endif--}}
+
+                  @can('comment_view')
+                    <a href="{{ route('admin.comments.show',[$comment->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
+                  @endcan
 
                   @can('comment_edit')
                     <a href="{{ route('admin.comments.edit',[$comment->id]) }}"

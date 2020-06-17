@@ -9,18 +9,18 @@
             @lang('quickadmin.qa_edit')
         </div>
 
-        <img src="{{ asset(env('UPLOAD_PATH'). App\PhotoImagePage::PATH . $photoImagePage->photo) }}" style="width: 50%">
+        <img src="{{ asset(env('UPLOAD_PATH') . App\PhotoImagePage::PATH . $photoImagePage->photo) }}" style="width: 400px">
         
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('photo', trans('quickadmin.photo_image_page.fields.photo').'*', ['class' => 'control-label']) !!}
-                    {!! Form::file('photo', ['class' => 'form-control', 'style' => 'margin-top: 4px;', 'required' => '']) !!}
+                    {!! Form::file('photo', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}
                     {!! Form::hidden('photo_max_size', 2) !!}
                     <p class="help-block"></p>
                     @if($errors->has('photo'))
                         <p class="help-block">
-                            {{ $errors->first('flag') }}
+                            {{ $errors->first('photo') }}
                         </p>
                     @endif
                 </div>
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 @stop
 

@@ -48,10 +48,10 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
-                                <td field-key='photo'>
+                                <td field-key='photo' class="text-center">
                                     @if($photo->photo)
                                         <a href="{{ asset(env('UPLOAD_PATH'). App\PhotoImagePage::PATH . $photo->photo) }}" target="_blank">
-                                            <img src="{{ asset(env('UPLOAD_PATH'). App\PhotoImagePage::PATH . $photo->photo) }}" style="width: 50%">
+                                            <img src="{{ asset(env('UPLOAD_PATH'). App\PhotoImagePage::PATH . $photo->photo) }}" style="width: 400px">
                                         </a>
                                     @endif</td>
                                 <td field-key='section'>{{ $photo->section }}</td>

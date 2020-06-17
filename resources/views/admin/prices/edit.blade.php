@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     @if ($price->flag)
-                        <a href="{{ asset(env('UPLOAD_PATH').'/'.$price->flag) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/'.$price->flag) }}"></a>
+                        <img src="{{ asset(env('UPLOAD_PATH') . App\Price::PATH . $price->flag) }}">
                     @endif
                     {!! Form::label('flag', trans('quickadmin.price.fields.flag').'*', ['class' => 'control-label']) !!}
                     {!! Form::file('flag', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}

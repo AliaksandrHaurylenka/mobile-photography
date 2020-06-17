@@ -51,18 +51,11 @@ class PricesController extends Controller
         $request = $this->saveFiles($request);
         $price = Price::create($request->all());
 
-
-
         return redirect()->route('admin.prices.index');
     }
 
 
-    /**
-     * Show the form for editing Price.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         if (! Gate::allows('price_edit')) {
@@ -79,9 +72,10 @@ class PricesController extends Controller
         if (! Gate::allows('price_edit')) {
             return abort(401);
         }
-        $request = $this->saveFiles($request);
+        
         $price = Price::findOrFail($id);
         if($_FILES['flag']['name']){
+            $request = $this->saveFiles($request);
             $price->removeImg();
         }
         $price->update($request->all());

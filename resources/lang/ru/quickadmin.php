@@ -115,6 +115,7 @@ return [
 			'name' => 'Имя',
 			'avatar' => 'Аватар',
 			'comment' => 'Отзыв',
+			'status' => 'Статус',
 		],
 	],
 	'qa_create' => 'Создать',

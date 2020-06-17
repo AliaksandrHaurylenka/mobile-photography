@@ -52,14 +52,20 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
 
-                                <td field-key='photo' style="width: 30%">
+                                <td field-key='photo' align="center">
                                     @if($portfolio->photo)
-                                        <a href="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo) }}" class="img-responsive"/>
+                                        <a href="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo) }}" class="img-responsive" style="width: 300px;">
                                         </a>
                                     @endif
                                 </td>
 
-                                <td field-key='photo_after' style="width: 30%">@if($portfolio->photo_after)<a href="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo_after) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo_after) }}" class="img-responsive"/></a>@endif</td>
+                                <td field-key='photo_after' align="center">
+                                    @if($portfolio->photo_after)
+                                        <a href="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo_after) }}" target="_blank">
+                                            <img src="{{ asset(env('UPLOAD_PATH'). App\Portfolio::PATH . $portfolio->photo_after) }}" class="img-responsive" style="width: 300px;">
+                                        </a>
+                                    @endif
+                                </td>
 
                                 <td field-key='category'>{{ $portfolio->category->title ?? '' }}</td>
 

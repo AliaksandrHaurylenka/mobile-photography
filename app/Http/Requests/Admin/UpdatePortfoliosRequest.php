@@ -23,10 +23,8 @@ class UpdatePortfoliosRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            // 'category_id' => 'required',
-            'photo' => 'mimes:png,jpg,jpeg,gif|required',
-            'photo_after' => 'mimes:png,jpg,jpeg,gif|required',
+            'photo' => 'mimes:png,jpg,jpeg,gif',
+            'photo_after' => 'mimes:png,jpg,jpeg,gif',
         ];
     }
 }

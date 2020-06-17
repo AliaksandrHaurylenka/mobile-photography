@@ -6,9 +6,13 @@ use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\FileUploadTraitUser;
 
 class CommentController extends Controller
 {
+
+    use FileUploadTraitUser;
+
     public function toggle($id)
     {
         $comment = Comment::find($id);
@@ -34,28 +38,48 @@ class CommentController extends Controller
             $comments = Comment::onlyTrashed()->get();
         } else {
             // $comments = Comment::all();
-            $comments = Comment::select(['id', 'name', 'avatar', 'comment'])->latest()->get();;
+            $comments = Comment::select(['id', 'name', 'avatar', 'comment'])->latest()->get();
         }
 
         return view('admin.comments.index', compact('comments'));
     }
 
     
-    public function show(Comment $comment)
+    public function show($id)
     {
-        //
+        if (! Gate::allows('comment_view')) {
+            return abort(401);
+        }
+        $comment = Comment::findOrFail($id);
+
+        return view('admin.comments.show', compact('comment'));
     }
 
     
-    public function edit(Comment $comment)
+    public function edit($id)
     {
-        //
+        if (! Gate::allows('comment_edit')) {
+            return abort(401);
+        }
+        $comment = Comment::findOrFail($id);
+
+        return view('admin.comments.edit', compact('comment'));
     }
 
     
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id)
     {
-        //
+        if (! Gate::allows('comment_edit')) {
+            return abort(401);
+        }
+        $comment = Comment::findOrFail($id);
+        if($_FILES['avatar']['name']){
+            $request = $this->saveFiles($request);
+            $comment->removeImg();
+        }
+        $comment->update($request->all());
+
+        return redirect()->route('admin.comments.index');
     }
 
     

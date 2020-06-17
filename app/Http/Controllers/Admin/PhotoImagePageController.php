@@ -61,7 +61,6 @@ class PhotoImagePageController extends Controller
         if (! Gate::allows('photo_image_page_edit')) {
             return abort(401);
         }
-        // $price = Price::findOrFail($id);
 
         return view('admin.photo_image_pages.edit', compact('photoImagePage'));
     }
@@ -72,8 +71,9 @@ class PhotoImagePageController extends Controller
         if (! Gate::allows('photo_image_page_edit')) {
             return abort(401);
         }
-        $request = $this->saveFiles($request);
+        
         if($_FILES['photo']['name']){
+            $request = $this->saveFiles($request);
             $photoImagePage->removeImg();
         }
         $photoImagePage->update($request->all());

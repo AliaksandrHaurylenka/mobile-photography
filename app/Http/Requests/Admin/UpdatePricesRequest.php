@@ -24,7 +24,7 @@ class UpdatePricesRequest extends FormRequest
     {
         return [
             
-            'flag' => 'nullable|mimes:png,jpg,jpeg,gif',
+            'flag' => 'mimes:png,jpg,jpeg,gif',
             'price' => 'max:2147483647|required|numeric',
             'currency' => 'required',
         ];
