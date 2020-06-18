@@ -86,13 +86,13 @@
               @else
                 <td>
 
-                  {{--@if(\Auth::user()->role_id == 1)--}}
-                    @if($comment->status == 'active')
-                      <a href="/admin/comment/toggle/{{$comment->id}}" class="btn btn-xs btn-success">Запретить</a>
-                    @else
-                      <a href="/admin/comment/toggle/{{$comment->id}}" class="btn btn-xs btn-warning">Опубликовать</a>
-                    @endif
-                  {{--@endif--}}
+                  
+                  @if($comment->status == 'active')
+                    <a href="/admin/comment/toggle/{{$comment->id}}" class="btn btn-xs btn-success">Запретить</a>
+                  @else
+                    <a href="/admin/comment/toggle/{{$comment->id}}" class="btn btn-xs btn-warning">Опубликовать</a>
+                  @endif
+                  
 
                   @can('comment_view')
                     <a href="{{ route('admin.comments.show',[$comment->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>

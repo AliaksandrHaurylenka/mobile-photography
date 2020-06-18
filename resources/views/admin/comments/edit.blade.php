@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     @if ($comment->avatar)
-                        <img src="{{ asset(env('UPLOAD_PATH').App\Comment::PATH . $comment->avatar) }}">
+                        <img src="{{ asset(env('UPLOAD_PATH').App\Comment::PATH . $comment->avatar) }}" style="width: 200px;">
                     @endif
                     {!! Form::label('avatar', trans('quickadmin.comment.fields.avatar'), ['class' => 'control-label']) !!}
                     {!! Form::file('avatar', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}

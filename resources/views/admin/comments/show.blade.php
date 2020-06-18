@@ -16,7 +16,7 @@
                             <th>@lang('quickadmin.comment.fields.avatar')</th>
                             <td field-key='avatar'>
                                 @if($comment->avatar)
-                                    <img src="{{ asset(env('UPLOAD_PATH').App\Comment::PATH . $comment->avatar) }}" class="img-responsive">
+                                    <img src="{{ asset(env('UPLOAD_PATH').App\Comment::PATH . $comment->avatar) }}" class="img-responsive" style="width: 300px;">
                                 @endif
                             </td>
                         </tr>

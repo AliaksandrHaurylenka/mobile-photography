@@ -9,8 +9,8 @@ class Comment extends Model
 {
     use SoftDeletes;
 
-    public const STATUS_WAIT = 'wait';
-    public const STATUS_ACTIVE = 'active';
+    const STATUS_WAIT = 'wait';
+    const STATUS_ACTIVE = 'active';
 
     const  PATH = 'img/comments/avatar/';
 
@@ -18,17 +18,17 @@ class Comment extends Model
     protected $hidden = [];
 
     public function allow() { 
-        $this->status = 'active';
+        $this->status = self::STATUS_ACTIVE;
         $this->save();
     }
 
     public function disAllow() {
-        $this->status = 'wait';
+        $this->status = self::STATUS_WAIT;
         $this->save();
     }
 
     public function toggleStatus() {
-        if ($this->status == 'wait') {
+        if ($this->status == self::STATUS_WAIT) {
             return $this->allow();
         }
 
