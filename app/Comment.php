@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Comment extends Model
 {
@@ -54,5 +55,10 @@ class Comment extends Model
     {
       $this->removeImg();
       $this->forceDelete();
+    }
+
+    public function getTransactionDateAttribute($value)
+    {
+      return Carbon::parse($value)->format('m/d/Y H:i:s');
     }
 }

@@ -25,11 +25,11 @@
                     <div class="col-sm-10 col-12">
                         
                         <h5 class="user-name font-weight-bold">{{ $comment->name }}</h5>
-                        
+
                         <div class="card-data">
                             <ul class="list-unstyled">
                                 <li class="comment-date font-small">
-                                    <i class="far fa-clock-o"></i> 05/10/2015</li>
+                                    <i class="far fa-clock-o"></i> {{ $comment->getTransactionDateAttribute($comment->created_at) }}</li>
                             </ul>
                         </div>
                         <p class="dark-grey-text article">{{ $comment->comment }}</p>

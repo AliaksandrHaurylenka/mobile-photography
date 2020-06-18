@@ -61,11 +61,7 @@ class MainController extends Controller
                                           'comments'));
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
-     */
+    
     public function topay(Request $request)
     {
 
@@ -83,9 +79,6 @@ class MainController extends Controller
 
         $data = $request->all();
 
-
-
-        // return redirect()->back()->with('status', 'Ваше сообщение отправлено!');
       }
     }
 }

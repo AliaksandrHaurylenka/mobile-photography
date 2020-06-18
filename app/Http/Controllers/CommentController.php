@@ -28,6 +28,11 @@ class CommentController extends Controller
 
         $request = $this->saveFiles($request);
         $comment = Comment::create($request->all());
+
+        // dd($comment->date = date('Y-m-d'));
+        // $comment->date = date('Y-m-d');
+        // $comment->date = date('d/m/Y');
+        // $comment->save();
         
             // Второй вариант загрузки файла
         // $image = $request->file('avatar');
