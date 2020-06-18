@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('avatar');
-            $table->string('comment');
+            $table->text('comment');
             $table->string('status');
 
             $table->timestamps();

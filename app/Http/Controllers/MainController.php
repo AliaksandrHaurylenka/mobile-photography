@@ -14,7 +14,7 @@ use App\MainMenu;
 use App\Price;
 use App\Category;
 use App\Portfolio;
-use App\PhotoImagePage;
+use App\Comment;
 
 class MainController extends Controller
 {
@@ -44,11 +44,21 @@ class MainController extends Controller
           'block2' => DB::table('photo_image_pages')->where('section', 'Блок 2')->value('photo'),
         ];
 
-        // $value = cache('key');
+        $comments = Comment::orderBy('id', 'desc')->paginate(3);
 
         // dd($sub_programs);
 
-        return view('site.index', compact('programs', 'subprogramme', 'social', 'main_menu', 'ancors', 'prices', 'categories', 'portfolio', 'main_images', 'mobil_photo'));
+        return view('site.index', compact('programs', 
+                                          'subprogramme', 
+                                          'social', 
+                                          'main_menu', 
+                                          'ancors', 
+                                          'prices', 
+                                          'categories', 
+                                          'portfolio', 
+                                          'main_images', 
+                                          'mobil_photo', 
+                                          'comments'));
     }
 
     /**
@@ -58,7 +68,6 @@ class MainController extends Controller
      */
     public function topay(Request $request)
     {
-      //dd($request->all());
 
       if ($request->isMethod('post')) {
 
