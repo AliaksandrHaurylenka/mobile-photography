@@ -7,8 +7,7 @@
         <div class="comments-list text-center text-md-left">
             <div class="text-center my-5">
                 <h3 class="font-weight-bold">Отзывы
-                    {{--<span class="badge indigo">{{ $comments->count() }}</span>--}}
-                    <span class="badge indigo">{{ App\Comment::count() }}</span>
+                    <span class="badge indigo">{{ App\Comment::where('status', 'active')->count() }}</span>
                 </h3>
             </div>
 

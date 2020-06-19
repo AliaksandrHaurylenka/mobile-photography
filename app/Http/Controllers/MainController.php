@@ -44,7 +44,7 @@ class MainController extends Controller
           'block2' => DB::table('photo_image_pages')->where('section', 'Блок 2')->value('photo'),
         ];
 
-        $comments = Comment::orderBy('id', 'desc')->paginate(3);
+        $comments = Comment::where('status', 'active')->orderBy('id', 'desc')->paginate(3);
 
         // dd($sub_programs);
 

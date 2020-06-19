@@ -18,6 +18,7 @@ class Comment extends Model
     protected $fillable = ['name', 'avatar', 'comment'];
     protected $hidden = [];
 
+
     public function allow() { 
         $this->status = self::STATUS_ACTIVE;
         $this->save();
@@ -59,6 +60,6 @@ class Comment extends Model
 
     public function getTransactionDateAttribute($value)
     {
-      return Carbon::parse($value)->format('m/d/Y H:i:s');
+      return Carbon::parse($value)->format('d/m/Y H:i:s');
     }
 }
