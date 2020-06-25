@@ -15,8 +15,13 @@ class Comment extends Model
 
     const  PATH = 'img/comments/avatar/';
 
-    protected $fillable = ['name', 'avatar', 'comment'];
+    protected $fillable = ['name', 'avatar', 'comment', 'status'];
     protected $hidden = [];
+
+    public function setStatusAttribute($input)
+    {
+        $this->attributes['status'] = $input ? $input : 'wait';
+    }
 
 
     public function allow() { 

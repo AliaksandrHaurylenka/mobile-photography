@@ -51,15 +51,30 @@
                 </div>
             </div>
             <div class="row">
+                <!-- checkbox -->
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('status', trans('quickadmin.comment.fields.status').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('status', old('status'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('status'))
-                        <p class="help-block">
-                            {{ $errors->first('status') }}
-                        </p>
-                    @endif
+                    <label>
+                        {{Form::radio('status', 'active', false,
+                            ['class' => 'minimal', 'id' => 'active']
+                        )}}
+                    </label>
+                    <label for="active">
+                        Опубликовать
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- checkbox -->
+                <div class="col-xs-12 form-group">
+                    <label>
+                        {{Form::radio('status', 'wait', false,
+                            ['class' => 'minimal', 'id' => 'wait']
+                        )}}
+                    </label>
+                    <label for="wait">
+                        Запретить
+                    </label>
                 </div>
             </div>
             
