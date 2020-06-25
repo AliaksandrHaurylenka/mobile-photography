@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Dusk\DuskServiceProvider;
+use App\Comment;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -18,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        //        Admin panel
+        view()->composer('partials.sidebar', function ($view){
+            $view->with('commentsCount', Comment::where('status', 'wait')->count());
+        });
     }
 
     /**

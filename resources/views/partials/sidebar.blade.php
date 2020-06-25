@@ -154,7 +154,7 @@
                     <i class="fa fa-commenting"></i>
                     <span>@lang('quickadmin.comment.title')</span>
                     <span class="pull-right-container">
-                        {{--<small class="label pull-right bg-green">{{$newsCommentsCount}}</small>--}}
+                        <small class="label pull-right bg-green">{{$commentsCount}}</small>
                     </span>
                 </a>
             </li>
