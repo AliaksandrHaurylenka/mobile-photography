@@ -45,6 +45,7 @@ class MainController extends Controller
         ];
 
         $comments = Comment::where('status', 'active')->orderBy('id', 'desc')->paginate(3);
+        
 
         // dd($sub_programs);
 

@@ -59,7 +59,7 @@
                   <img src="{{ asset(env('UPLOAD_PATH').App\Comment::PATH . $comment->avatar) }}" class="img-responsive">
                 @endif
               </td>
-              <td field-key='comment'>{{ $comment->comment }}</td>
+              <td field-key='comment'>{!! $comment->comment !!}</td>
               
 
               @if( request('show_deleted') == 1 )

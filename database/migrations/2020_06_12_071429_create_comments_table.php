@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('avatar');
             $table->text('comment');
             $table->string('status')->default('wait');
-            // $table->date('date');
+            
 
             $table->timestamps();
             $table->softDeletes();

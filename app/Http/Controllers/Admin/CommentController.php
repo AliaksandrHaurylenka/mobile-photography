@@ -37,8 +37,7 @@ class CommentController extends Controller
             }
             $comments = Comment::onlyTrashed()->get();
         } else {
-            // $comments = Comment::all();
-            $comments = Comment::select(['id', 'name', 'avatar', 'comment'])->latest()->get();
+            $comments = Comment::select(['id', 'name', 'avatar', 'comment', 'status'])->latest()->get();
         }
 
         return view('admin.comments.index', compact('comments'));
