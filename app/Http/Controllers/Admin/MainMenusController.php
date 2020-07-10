@@ -9,24 +9,39 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreMainMenusRequest;
 use App\Http\Requests\Admin\UpdateMainMenusRequest;
 
+use App\Http\Controllers\Admin\Obj\ObjMainMenu;
+
+
 class MainMenusController extends Controller
 {
-    
+    protected $obj;
+
+    public function __construct()
+    {
+        // $this->obj = new ObjMainMenu('main_menu_delete', 'main_menu_delete', 'main_menu_create');
+        $this->obj = new ObjMainMenu('main_menu', 'main_menu_access');
+       
+    }
+    // use ObjMainMenu;
+
     public function index()
     {
-        if (! Gate::allows('main_menu_access')) {
-            return abort(401);
-        }
+        // if (! Gate::allows('main_menu_access')) {
+        //     return abort(401);
+        // }
 
 
-        if (request('show_deleted') == 1) {
-            if (! Gate::allows('main_menu_delete')) {
-                return abort(401);
-            }
-            $main_menus = MainMenu::onlyTrashed()->get();
-        } else {
-            $main_menus = MainMenu::all();
-        }
+        // if (request('show_deleted') == 1) {
+        //     if (! Gate::allows('main_menu_delete')) {
+        //         return abort(401);
+        //     }
+        //     $main_menus = MainMenu::onlyTrashed()->get();
+        // } else {
+        //     $main_menus = MainMenu::all();
+        // }
+        // $main_menus = new ObjMainMenu();
+        $main_menus = $this->obj->getItems();
+        // dd($main_menus);
 
         return view('admin.main_menus.index', compact('main_menus'));
     }
@@ -34,9 +49,12 @@ class MainMenusController extends Controller
     
     public function create()
     {
-        if (! Gate::allows('main_menu_create')) {
-            return abort(401);
-        }
+        // if (! Gate::allows('main_menu_create')) {
+        //     return abort(401);
+        // }
+
+        $this->obj->viewCreateItems('_create');
+        
         return view('admin.main_menus.create');
     }
 
@@ -48,7 +66,7 @@ class MainMenusController extends Controller
         }
         $main_menu = MainMenu::create($request->all());
 
-
+        // $this->obj->add($request);
 
         return redirect()->route('admin.main_menus.index');
     }
