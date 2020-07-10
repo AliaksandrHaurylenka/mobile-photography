@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->string('name');
             $table->string('avatar');
             $table->text('comment');
-            $table->string('status')->default('wait');
+            $table->string('status')->default('wait')->nullable();
             
 
             $table->timestamps();

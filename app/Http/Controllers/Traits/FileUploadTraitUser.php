@@ -35,15 +35,16 @@ trait FileUploadTraitUser
         {
             $uploadPath = Comment::PATH;
         }
-        else
-        {
-            return redirect()->route('admin.home')->send();
-        }
+        // else
+        // {
+        //     // return redirect()->route('admin.home')->send();
+        //     $uploadPath = null;
+        // }
 
 
-        if (! file_exists($uploadPath)) {
-            mkdir($uploadPath, 0775);
-        }
+        // if (! file_exists($uploadPath)) {
+        //     mkdir($uploadPath, 0775);
+        // }
 
         $finalRequest = $request;
 
