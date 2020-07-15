@@ -14,12 +14,15 @@ use App\Http\Controllers\Admin\Obj\ObjGate;
 
 class MainMenusController extends Controller
 {
+    /**
+     * @param $objgate string //имя таблицы в единственном числе
+     */
     protected $objgate;
 
+    
     public function __construct()
     {
         $this->objgate = new ObjGate('main_menu');
-       
     }
 
     public function index()

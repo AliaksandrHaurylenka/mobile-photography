@@ -9,20 +9,19 @@ use App\Http\Requests\Admin\StoreMainMenusRequest;
 class ObjGate
 {
 
-  protected $name;
+  protected $nameTable;
   
  
   public function __construct($name)
     {
-      $this->name = $name;
-        
+      $this->nameTable = $name;       
     }
 
   
 
   public function gate($action)
   {
-    if (! Gate::allows($this->name . '_' . $action)) {
+    if (! Gate::allows($this->nameTable . '_' . $action)) {
       return abort(401);
     }
   }
