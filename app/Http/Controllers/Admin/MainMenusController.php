@@ -24,13 +24,16 @@ class MainMenusController extends Controller
     
     public function __construct()
     {
-        $this->objgate = new ObjGate('main_menu');
+        $this->objgate = new ObjGate('main_menu', MainMenu::class);
     }
 
     public function index()
     {
+
         
-        $this->objgate->gate('access');
+        // $this->objgate->gate('access');
+        // return $this->objgate->index();
+        return $this->objgate->index('admin.main_menus.index', 'main_menus');
 
         // if (request('show_deleted') == 1) {
         //     $this->objgate->gate('delete');
@@ -39,15 +42,15 @@ class MainMenusController extends Controller
         // } else {
         //     $main_menus = MainMenu::all();
         // }
-        if (request('show_deleted') == 1) {
-            $this->objgate->gate('delete');
+        // if (request('show_deleted') == 1) {
+        //     $this->objgate->gate('delete');
             
-            $main_menus = $this->class::onlyTrashed()->get();
-        } else {
-            $main_menus = $this->class::all();
-        }
+        //     $main_menus = $this->class::onlyTrashed()->get();
+        // } else {
+        //     $main_menus = $this->class::all();
+        // }
 
-        return view('admin.main_menus.index', compact('main_menus'));
+        // return view('admin.main_menus.index', compact('main_menus'));
     }
 
     
