@@ -2,24 +2,25 @@
 namespace App\Http\Controllers\Admin\Obj;
 
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\Admin\UserInterface\CRUDInterface;
 
 
-class CRUD
+
+class CRUD implements CRUDInterface
 {
 
   private $nameTable;
   private $model;
-  
- 
+
+
   public function __construct($name, $model)
     {
       $this->nameTable = $name;
-      $this->model =  $model;  
+      $this->model =  $model;
     }
 
-  
+
 
   public function gate($action)
   {
@@ -33,13 +34,13 @@ class CRUD
   {
     if (request('show_deleted') == 1) {
       $this->gate('delete');
-      
-      $nameTable = $this->model::onlyTrashed()->get(); 
+
+      $nameTable = $this->model::onlyTrashed()->get();
     } else {
       $nameTable = $this->model::all();
-      
+
     }
-    
+
     return $nameTable;
   }
 
@@ -51,7 +52,7 @@ class CRUD
 
 
   public function store($request)
-  {  
+  {
     $this->gate('create');
 
     $main_menu = $this->model::create($request->all());
@@ -59,7 +60,7 @@ class CRUD
 
 
   public function edit($id)
-  {  
+  {
     $this->gate('edit');
 
     return $this->model::findOrFail($id);
@@ -67,7 +68,7 @@ class CRUD
 
 
   public function update($request, $id)
-  {  
+  {
     $this->gate('edit');
 
     $data = $this->model::findOrFail($id);
@@ -76,10 +77,10 @@ class CRUD
 
 
   public function show($id)
-  {  
+  {
     $this->gate('view');
 
-    return $this->model::findOrFail($id); 
+    return $this->model::findOrFail($id);
   }
 
 
