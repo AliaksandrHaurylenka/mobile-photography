@@ -11,12 +11,14 @@ class ObjGate
 
   protected $nameTable;
   protected $model;
+  protected $param;
   
  
-  public function __construct($name, $model)
+  public function __construct($name, $model, $param)
     {
       $this->nameTable = $name;
-      $this->model =  $model;    
+      $this->model =  $model;  
+      $this->param =  $param;  
     }
 
   
@@ -29,7 +31,7 @@ class ObjGate
   }
 
 
-  public function index($path, $param)
+  public function index($path)
   {
     if (request('show_deleted') == 1) {
       $this->gate('delete');
@@ -41,7 +43,7 @@ class ObjGate
       // $this->model::all();
     }
 
-    return view($path, compact($param));
+    return view($path, compact($this->param));
     // return $main_menus;
   }
 

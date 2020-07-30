@@ -24,7 +24,7 @@ class MainMenusController extends Controller
     
     public function __construct()
     {
-        $this->objgate = new ObjGate('main_menu', MainMenu::class);
+        $this->objgate = new ObjGate('main_menu', MainMenu::class, 'main_menus');
     }
 
     public function index()
@@ -33,7 +33,7 @@ class MainMenusController extends Controller
         
         // $this->objgate->gate('access');
         // return $this->objgate->index();
-        return $this->objgate->index('admin.main_menus.index', 'main_menus');
+        return $this->objgate->index('admin.main_menus.index');
 
         // if (request('show_deleted') == 1) {
         //     $this->objgate->gate('delete');
