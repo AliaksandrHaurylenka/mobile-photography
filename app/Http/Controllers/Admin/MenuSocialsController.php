@@ -9,30 +9,25 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreMenuSocialsRequest;
 use App\Http\Requests\Admin\UpdateMenuSocialsRequest;
 
+use App\Http\Controllers\Admin\Obj\CRUD;
+
 class MenuSocialsController extends Controller
 {
-    /**
-     * Display a listing of MenuSocial.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $crud;
+    protected $class = MenuSocial::class;
+
+    
+    public function __construct()
+    {
+        $this->crud = new CRUD('menu_social', MenuSocial::class);
+    }
+
+
     public function index()
     {
-        if (! Gate::allows('menu_social_access')) {
-            return abort(401);
-        }
+        $data = $this->crud->index();
 
-
-        if (request('show_deleted') == 1) {
-            if (! Gate::allows('menu_social_delete')) {
-                return abort(401);
-            }
-            $menu_socials = MenuSocial::onlyTrashed()->get();
-        } else {
-            $menu_socials = MenuSocial::all();
-        }
-
-        return view('admin.menu_socials.index', compact('menu_socials'));
+        return view('admin.menu_socials.index', compact('data'));
     }
 
     /**

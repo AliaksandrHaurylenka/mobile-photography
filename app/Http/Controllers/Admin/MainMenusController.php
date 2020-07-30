@@ -9,32 +9,28 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreMainMenusRequest;
 use App\Http\Requests\Admin\UpdateMainMenusRequest;
 
-use App\Http\Controllers\Admin\Obj\ObjGate;
+use App\Http\Controllers\Admin\Obj\CRUD;
 
 
 class MainMenusController extends Controller
 {
     /**
-     * @param $objgate string //имя таблицы в единственном числе
+     * @param $crud string //имя таблицы в единственном числе
      */
-    protected $objgate;
-
+    protected $crud;
     protected $class = MainMenu::class;
 
     
     public function __construct()
     {
-        $this->objgate = new ObjGate('main_menu', MainMenu::class);
+        $this->crud = new CRUD('main_menu', MainMenu::class);
     }
 
     public function index()
     {
 
-        
-        
-
         // if (request('show_deleted') == 1) {
-        //     $this->objgate->gate('delete');
+        //     $this->crud->gate('delete');
             
         //     $main_menus = MainMenu::onlyTrashed()->get();
         // } else {
@@ -45,15 +41,15 @@ class MainMenusController extends Controller
 
 
         
-        $main_menus = $this->objgate->index();
+        $data = $this->crud->index();
 
-        return view('admin.main_menus.index', compact('main_menus'));
+        return view('admin.main_menus.index', compact('data'));
     }
 
     
     public function create()
     {
-        $this->objgate->gate('create');
+        $this->crud->gate('create');
         
         return view('admin.main_menus.create');
     }
@@ -61,7 +57,7 @@ class MainMenusController extends Controller
     
     public function store(StoreMainMenusRequest $request)
     {
-        $this->objgate->gate('create');
+        $this->crud->gate('create');
 
         $main_menu = MainMenu::create($request->all());
 
@@ -72,7 +68,7 @@ class MainMenusController extends Controller
     
     public function edit($id)
     {
-        $this->objgate->gate('edit');
+        $this->crud->gate('edit');
 
         $main_menu = MainMenu::findOrFail($id);
 
@@ -82,7 +78,7 @@ class MainMenusController extends Controller
     
     public function update(UpdateMainMenusRequest $request, $id)
     {
-        $this->objgate->gate('edit');
+        $this->crud->gate('edit');
 
         $main_menu = MainMenu::findOrFail($id);
         $main_menu->update($request->all());
@@ -94,7 +90,7 @@ class MainMenusController extends Controller
     
     public function show($id)
     {
-         $this->objgate->gate('view');
+         $this->crud->gate('view');
         $main_menu = MainMenu::findOrFail($id);
 
         return view('admin.main_menus.show', compact('main_menu'));
@@ -104,7 +100,7 @@ class MainMenusController extends Controller
    
     public function destroy($id)
     {
-        $this->objgate->gate('delete');
+        $this->crud->gate('delete');
 
         $main_menu = MainMenu::findOrFail($id);
         $main_menu->delete();
@@ -115,7 +111,7 @@ class MainMenusController extends Controller
     
     public function massDestroy(Request $request)
     {
-        $this->objgate->gate('delete');
+        $this->crud->gate('delete');
 
         if ($request->input('ids')) {
             $entries = MainMenu::whereIn('id', $request->input('ids'))->get();
@@ -130,7 +126,7 @@ class MainMenusController extends Controller
     
     public function restore($id)
     {
-        $this->objgate->gate('delete');
+        $this->crud->gate('delete');
 
         $main_menu = MainMenu::onlyTrashed()->findOrFail($id);
         $main_menu->restore();
@@ -141,7 +137,7 @@ class MainMenusController extends Controller
     
     public function perma_del($id)
     {
-        $this->objgate->gate('delete');
+        $this->crud->gate('delete');
 
         $main_menu = MainMenu::onlyTrashed()->findOrFail($id);
         $main_menu->forceDelete();

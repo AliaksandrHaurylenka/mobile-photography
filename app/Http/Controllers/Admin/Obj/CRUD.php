@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Admin\StoreMainMenusRequest;
 
-class ObjGate
+class CRUD
 {
 
   protected $nameTable;

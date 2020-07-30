@@ -26,7 +26,7 @@
         </div>
 
         <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($menu_socials) > 0 ? 'datatable' : '' }} @can('menu_social_delete') @if ( request('show_deleted') != 1 ) dt-select @endif @endcan">
+            <table class="table table-bordered table-striped {{ count($data) > 0 ? 'datatable' : '' }} @can('menu_social_delete') @if ( request('show_deleted') != 1 ) dt-select @endif @endcan">
                 <thead>
                     <tr>
                         @can('menu_social_delete')
@@ -44,8 +44,8 @@
                 </thead>
                 
                 <tbody>
-                    @if (count($menu_socials) > 0)
-                        @foreach ($menu_socials as $menu_social)
+                    @if (count($data) > 0)
+                        @foreach ($data as $menu_social)
                             <tr data-entry-id="{{ $menu_social->id }}">
                                 @can('menu_social_delete')
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
