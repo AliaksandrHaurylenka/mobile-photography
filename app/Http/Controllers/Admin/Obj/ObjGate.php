@@ -11,14 +11,14 @@ class ObjGate
 
   protected $nameTable;
   protected $model;
-  protected $param;
+  // protected $param;
   
  
-  public function __construct($name, $model, $param)
+  public function __construct($name, $model)
     {
       $this->nameTable = $name;
       $this->model =  $model;  
-      $this->param =  $param;  
+      // $this->param =  $param;  
     }
 
   
@@ -31,20 +31,18 @@ class ObjGate
   }
 
 
-  public function index($path)
+  public function index()
   {
     if (request('show_deleted') == 1) {
       $this->gate('delete');
       
-      $main_menus = $this->model::onlyTrashed()->get();
-      // $this->model::onlyTrashed()->get();
+      $nameTable = $this->model::onlyTrashed()->get(); 
     } else {
-      $main_menus = $this->model::all();
-      // $this->model::all();
+      $nameTable = $this->model::all();
+      
     }
-
-    return view($path, compact($this->param));
-    // return $main_menus;
+    
+    return $nameTable;
   }
 
 }
