@@ -67,7 +67,7 @@ class PricesController extends Controller
 //        }
 //        $price->update($request->all());
 
-        $this->crud->updateSaveFile($request, $id);
+        $this->crud->updateSaveFile($request, $id, 'flag');
 
         return redirect()->route('admin.prices.index');
     }

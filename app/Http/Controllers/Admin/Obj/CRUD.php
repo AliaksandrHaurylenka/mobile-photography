@@ -136,12 +136,12 @@ class CRUD implements CRUDInterface
   }
 
 
-  public function updateSaveFile($request, $id)
+  public function updateSaveFile($request, $id, $column)
   {
       $this->gate('edit');
 
       $data = $this->model::findOrFail($id);
-      if($_FILES['flag']['name']){
+      if($_FILES[$column]['name']){
           $request = $this->saveFiles($request);
           $data->removeImg();
       }
