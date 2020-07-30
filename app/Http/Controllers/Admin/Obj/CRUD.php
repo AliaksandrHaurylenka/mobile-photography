@@ -67,4 +67,30 @@ class CRUD
     return $this->model::findOrFail($id);
   }
 
+
+  public function update($request, $id)
+  {  
+    $this->gate('edit');
+
+    $data = $this->model::findOrFail($id);
+    $data->update($request->all());
+  }
+
+
+  public function show($id)
+  {  
+    $this->gate('view');
+
+    return $this->model::findOrFail($id); 
+  }
+
+
+  public function destroy($id)
+    {
+      $this->gate('delete');
+
+      $data = $this->model::findOrFail($id);
+      $data->delete();
+    }
+
 }

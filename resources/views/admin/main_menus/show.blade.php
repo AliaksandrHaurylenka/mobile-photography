@@ -14,11 +14,11 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>@lang('quickadmin.main-menu.fields.title')</th>
-                            <td field-key='title'>{{ $main_menu->title }}</td>
+                            <td field-key='title'>{{ $data->title }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.main-menu.fields.link')</th>
-                            <td field-key='link'>{{ $main_menu->link }}</td>
+                            <td field-key='link'>{{ $data->link }}</td>
                         </tr>
                     </table>
                 </div>

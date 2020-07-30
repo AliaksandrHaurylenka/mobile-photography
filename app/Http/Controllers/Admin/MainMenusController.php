@@ -77,10 +77,10 @@ class MainMenusController extends Controller
     
     public function update(UpdateMainMenusRequest $request, $id)
     {
-        $this->crud->gate('edit');
+        $this->crud->update($request, $id);
 
-        $main_menu = MainMenu::findOrFail($id);
-        $main_menu->update($request->all());
+        // $main_menu = MainMenu::findOrFail($id);
+        // $main_menu->update($request->all());
 
         return redirect()->route('admin.main_menus.index');
     }
@@ -89,20 +89,20 @@ class MainMenusController extends Controller
     
     public function show($id)
     {
-         $this->crud->gate('view');
-        $main_menu = MainMenu::findOrFail($id);
+        $data = $this->crud->show($id);
+        // $main_menu = MainMenu::findOrFail($id);
 
-        return view('admin.main_menus.show', compact('main_menu'));
+        return view('admin.main_menus.show', compact('data'));
     }
 
 
    
     public function destroy($id)
     {
-        $this->crud->gate('delete');
+        $this->crud->destroy($id);
 
-        $main_menu = MainMenu::findOrFail($id);
-        $main_menu->delete();
+        // $main_menu = MainMenu::findOrFail($id);
+        // $main_menu->delete();
 
         return redirect()->route('admin.main_menus.index');
     }
