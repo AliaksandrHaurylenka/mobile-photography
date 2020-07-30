@@ -11,14 +11,12 @@ class CRUD
 
   private $nameTable;
   private $model;
-  // protected $param;
   
  
   public function __construct($name, $model)
     {
       $this->nameTable = $name;
       $this->model =  $model;  
-      // $this->param =  $param;  
     }
 
   
@@ -86,11 +84,43 @@ class CRUD
 
 
   public function destroy($id)
-    {
+  {
+    $this->gate('delete');
+
+    $data = $this->model::findOrFail($id);
+    $data->delete();
+  }
+
+
+  public function massDestroy($request)
+  {
       $this->gate('delete');
 
-      $data = $this->model::findOrFail($id);
-      $data->delete();
-    }
+      if ($request->input('ids')) {
+        $entries = $this->model::whereIn('id', $request->input('ids'))->get();
+
+        foreach ($entries as $entry) {
+            $entry->delete();
+        }
+      }
+  }
+
+
+  public function restore($id)
+  {
+    $this->gate('delete');
+
+    $data = $this->model::onlyTrashed()->findOrFail($id);
+    $data->restore();
+  }
+
+
+  public function perma_del($id)
+  {
+    $this->gate('delete');
+
+    $data = $this->model::onlyTrashed()->findOrFail($id);
+    $data->forceDelete();
+  }
 
 }

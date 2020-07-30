@@ -110,25 +110,25 @@ class MainMenusController extends Controller
     
     public function massDestroy(Request $request)
     {
-        $this->crud->gate('delete');
+        $this->crud->massDestroy($request);
 
-        if ($request->input('ids')) {
-            $entries = MainMenu::whereIn('id', $request->input('ids'))->get();
+        // if ($request->input('ids')) {
+        //     $entries = MainMenu::whereIn('id', $request->input('ids'))->get();
 
-            foreach ($entries as $entry) {
-                $entry->delete();
-            }
-        }
+        //     foreach ($entries as $entry) {
+        //         $entry->delete();
+        //     }
+        // }
     }
 
 
     
     public function restore($id)
     {
-        $this->crud->gate('delete');
+        $this->crud->restore($id);
 
-        $main_menu = MainMenu::onlyTrashed()->findOrFail($id);
-        $main_menu->restore();
+        // $main_menu = MainMenu::onlyTrashed()->findOrFail($id);
+        // $main_menu->restore();
 
         return redirect()->route('admin.main_menus.index');
     }
@@ -136,10 +136,10 @@ class MainMenusController extends Controller
     
     public function perma_del($id)
     {
-        $this->crud->gate('delete');
+        $this->crud->perma_del($id);
 
-        $main_menu = MainMenu::onlyTrashed()->findOrFail($id);
-        $main_menu->forceDelete();
+        // $main_menu = MainMenu::onlyTrashed()->findOrFail($id);
+        // $main_menu->forceDelete();
 
         return redirect()->route('admin.main_menus.index');
     }
