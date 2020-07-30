@@ -17,10 +17,9 @@ class MainMenusController extends Controller
     /**
      * @param $crud string //имя таблицы в единственном числе
      */
-    protected $crud;
-    protected $class = MainMenu::class;
+    private $crud;
 
-    
+
     public function __construct()
     {
         $this->crud = new CRUD('main_menu', MainMenu::class);
@@ -31,7 +30,7 @@ class MainMenusController extends Controller
 
         // if (request('show_deleted') == 1) {
         //     $this->crud->gate('delete');
-            
+
         //     $main_menus = MainMenu::onlyTrashed()->get();
         // } else {
         //     $main_menus = MainMenu::all();
@@ -40,21 +39,21 @@ class MainMenusController extends Controller
         // dd($main_menus);
 
 
-        
+
         $data = $this->crud->index();
 
         return view('admin.main_menus.index', compact('data'));
     }
 
-    
+
     public function create()
     {
         $this->crud->create();
-        
+
         return view('admin.main_menus.create');
     }
 
-    
+
     public function store(StoreMainMenusRequest $request)
     {
         $this->crud->store($request);
@@ -65,7 +64,7 @@ class MainMenusController extends Controller
     }
 
 
-    
+
     public function edit($id)
     {
         // $main_menu = MainMenu::findOrFail($id);
@@ -74,7 +73,7 @@ class MainMenusController extends Controller
         return view('admin.main_menus.edit', compact('data'));
     }
 
-    
+
     public function update(UpdateMainMenusRequest $request, $id)
     {
         $this->crud->update($request, $id);
@@ -86,7 +85,7 @@ class MainMenusController extends Controller
     }
 
 
-    
+
     public function show($id)
     {
         $data = $this->crud->show($id);
@@ -96,7 +95,7 @@ class MainMenusController extends Controller
     }
 
 
-   
+
     public function destroy($id)
     {
         $this->crud->destroy($id);
@@ -107,7 +106,7 @@ class MainMenusController extends Controller
         return redirect()->route('admin.main_menus.index');
     }
 
-    
+
     public function massDestroy(Request $request)
     {
         $this->crud->massDestroy($request);
@@ -122,7 +121,7 @@ class MainMenusController extends Controller
     }
 
 
-    
+
     public function restore($id)
     {
         $this->crud->restore($id);
@@ -133,7 +132,7 @@ class MainMenusController extends Controller
         return redirect()->route('admin.main_menus.index');
     }
 
-    
+
     public function perma_del($id)
     {
         $this->crud->perma_del($id);
