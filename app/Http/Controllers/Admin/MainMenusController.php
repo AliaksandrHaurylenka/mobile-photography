@@ -49,7 +49,7 @@ class MainMenusController extends Controller
     
     public function create()
     {
-        $this->crud->gate('create');
+        $this->crud->create();
         
         return view('admin.main_menus.create');
     }
@@ -57,9 +57,9 @@ class MainMenusController extends Controller
     
     public function store(StoreMainMenusRequest $request)
     {
-        $this->crud->gate('create');
+        $this->crud->store($request);
 
-        $main_menu = MainMenu::create($request->all());
+        // $main_menu = MainMenu::create($request->all());
 
         return redirect()->route('admin.main_menus.index');
     }
@@ -68,11 +68,10 @@ class MainMenusController extends Controller
     
     public function edit($id)
     {
-        $this->crud->gate('edit');
+        // $main_menu = MainMenu::findOrFail($id);
+        $data = $this->crud->edit($id);
 
-        $main_menu = MainMenu::findOrFail($id);
-
-        return view('admin.main_menus.edit', compact('main_menu'));
+        return view('admin.main_menus.edit', compact('data'));
     }
 
     

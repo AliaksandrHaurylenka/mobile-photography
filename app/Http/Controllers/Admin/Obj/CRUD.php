@@ -1,16 +1,16 @@
 <?php
 namespace App\Http\Controllers\Admin\Obj;
 
-use App\MainMenu;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use App\Http\Requests\Admin\StoreMainMenusRequest;
+
 
 class CRUD
 {
 
-  protected $nameTable;
-  protected $model;
+  private $nameTable;
+  private $model;
   // protected $param;
   
  
@@ -43,6 +43,28 @@ class CRUD
     }
     
     return $nameTable;
+  }
+
+
+  public function create()
+  {
+    return $this->gate('create');
+  }
+
+
+  public function store($request)
+  {  
+    $this->gate('create');
+
+    $main_menu = $this->model::create($request->all());
+  }
+
+
+  public function edit($id)
+  {  
+    $this->gate('edit');
+
+    return $this->model::findOrFail($id);
   }
 
 }
