@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Subprogramme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreSubprogrammesRequest;
 use App\Http\Requests\Admin\UpdateSubprogrammesRequest;

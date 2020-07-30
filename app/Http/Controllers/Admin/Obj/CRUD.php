@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin\Obj;
 
 
+use App\Http\Controllers\Traits\FileUploadTraitUser;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Admin\UserInterface\CRUDInterface;
 
@@ -9,6 +10,7 @@ use App\Http\Controllers\Admin\UserInterface\CRUDInterface;
 
 class CRUD implements CRUDInterface
 {
+    use FileUploadTraitUser;
 
   private $nameTable;
   private $model;
@@ -38,7 +40,6 @@ class CRUD implements CRUDInterface
       $nameTable = $this->model::onlyTrashed()->get();
     } else {
       $nameTable = $this->model::all();
-
     }
 
     return $nameTable;
@@ -122,6 +123,37 @@ class CRUD implements CRUDInterface
 
     $data = $this->model::onlyTrashed()->findOrFail($id);
     $data->forceDelete();
+  }
+
+
+
+  // Работа с файлами
+  public function storeSaveFile($request)
+  {
+      $this->gate('create');
+      $request = $this->saveFiles($request);
+      $this->model::create($request->all());
+  }
+
+
+  public function updateSaveFile($request, $id)
+  {
+      $this->gate('edit');
+
+      $data = $this->model::findOrFail($id);
+      if($_FILES['flag']['name']){
+          $request = $this->saveFiles($request);
+          $data->removeImg();
+      }
+      $data->update($request->all());
+  }
+
+  public function check_file()
+  {
+      if($_FILES['photo']['name']){
+          $request = $this->saveFiles($request);
+          $portfolio->removePhoto('photo');
+      }
   }
 
 }
