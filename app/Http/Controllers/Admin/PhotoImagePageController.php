@@ -8,131 +8,82 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StorePhotoImagePagesRequest;
 use App\Http\Requests\Admin\UpdatePhotoImagePagesRequest;
-use App\Http\Controllers\Traits\FileUploadTraitUser;
+
+use App\Http\Controllers\Admin\Obj\CRUDFile;
+
 
 class PhotoImagePageController extends Controller
 {
-    use FileUploadTraitUser;
-    
+    private $crud;
+
+
+    public function __construct()
+    {
+        $this->crud = new CRUDFile('photo_image_page', PhotoImagePage::class);
+    }
+
+
+
     public function index()
     {
-        if (! Gate::allows('photo_image_page_access')) {
-            return abort(401);
-        }
-
-
-        if (request('show_deleted') == 1) {
-            if (! Gate::allows('photo_image_page_delete')) {
-                return abort(401);
-            }
-            $photo_image_pages = PhotoImagePage::onlyTrashed()->get();
-        } else {
-            $photo_image_pages = PhotoImagePage::all();
-        }
-
+        $photo_image_pages = $this->crud->index();
         return view('admin.photo_image_pages.index', compact('photo_image_pages'));
     }
 
-    
+
     public function create()
     {
-        if (! Gate::allows('photo_image_page_create')) {
-            return abort(401);
-        }
+        $this->crud->create();
         return view('admin.photo_image_pages.create');
     }
 
-    
+
     public function store(StorePhotoImagePagesRequest $request)
     {
-        if (! Gate::allows('photo_image_page_create')) {
-            return abort(401);
-        }
-        $request = $this->saveFiles($request);
-        $photo_image_page = PhotoImagePage::create($request->all());
-
+        $this->crud->storeSaveFile($request);
         return redirect()->route('admin.photo_image_pages.index');
     }
 
 
-    
-    public function edit(PhotoImagePage $photoImagePage)
-    {
-        if (! Gate::allows('photo_image_page_edit')) {
-            return abort(401);
-        }
 
+    public function edit($id)
+    {
+        $photoImagePage = $this->crud->edit($id);
         return view('admin.photo_image_pages.edit', compact('photoImagePage'));
     }
 
-    
-    public function update(UpdatePhotoImagePagesRequest $request, PhotoImagePage $photoImagePage)
+
+    public function update(UpdatePhotoImagePagesRequest $request, $id)
     {
-        if (! Gate::allows('photo_image_page_edit')) {
-            return abort(401);
-        }
-        
-        if($_FILES['photo']['name']){
-            $request = $this->saveFiles($request);
-            $photoImagePage->removeImg();
-        }
-        $photoImagePage->update($request->all());
-
-        // dd($photoImagePage);
-
+        $this->crud->updateSaveFile($request, $id, ['photo']);
         return redirect()->route('admin.photo_image_pages.index');
     }
 
-    
+
     public function destroy($id)
     {
-        if (! Gate::allows('photo_image_page_delete')) {
-            return abort(401);
-        }
-        $photo_image_page = PhotoImagePage::findOrFail($id);
-        $photo_image_page->delete();
-
+        $this->crud->destroy($id);
         return redirect()->route('admin.photo_image_pages.index');
     }
 
-    
+
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('photo_image_page_delete')) {
-            return abort(401);
-        }
-        if ($request->input('ids')) {
-            $entries = PhotoImagePage::whereIn('id', $request->input('ids'))->get();
-
-            foreach ($entries as $entry) {
-                $entry->delete();
-            }
-        }
+        $this->crud->massDestroy($request);
     }
 
 
-    
+
     public function restore($id)
     {
-        if (! Gate::allows('photo_image_page_delete')) {
-            return abort(401);
-        }
-        $photo_image_page = PhotoImagePage::onlyTrashed()->findOrFail($id);
-        $photo_image_page->restore();
-
+        $this->crud->restore($id);
         return redirect()->route('admin.photo_image_pages.index');
     }
 
-    
+
     public function perma_del($id)
     {
-        if (! Gate::allows('photo_image_page_delete')) {
-            return abort(401);
-        }
-        $photo_image_page = PhotoImagePage::onlyTrashed()->findOrFail($id);
-        $photo_image_page->forceDelete();
-        $photo_image_page->remove();
-
+        $this->crud->perma_del_file($id, ['photo']);
         return redirect()->route('admin.photo_image_pages.index');
     }
 }

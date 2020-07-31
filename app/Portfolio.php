@@ -39,30 +39,13 @@ class Portfolio extends Model
     /**
      * Удаление фото при удалении записи в базе
      * Функция используется в update
+     * @param $column
      */
-    public function removeImg()
-    {
-      if ($this->photo != null && $this->photo_after != null) {
-        unlink(public_path(Portfolio::PATH . $this->photo));
-        unlink(public_path(Portfolio::PATH . $this->photo_after));
-      }
-    }
-
     public function removeFile($column)
     {
-      if ($this->$column != null) {
+      if ($this->$column != null && file_exists(Portfolio::PATH . $this->$column)) {
         unlink(public_path(Portfolio::PATH . $this->$column));
       }
-    }
-
-    /**
-     * Удаление фото при удалении записи в базе
-     * Функция используется в perma_del
-     */
-    public function remove()
-    {
-      $this->removeImg();
-//      $this->forceDelete();
     }
 
 }

@@ -13,6 +13,9 @@ class PhotoImagePage extends Model
 
     protected $fillable = ['photo', 'section'];
     protected $hidden = [];
+    /**
+     * @var mixed
+     */
 
 
 
@@ -29,12 +32,13 @@ class PhotoImagePage extends Model
     /**
      * Удаление фото при удалении записи в базе
      * Функция используется в update
+     * @param $column
      */
-    public function removeImg()
+    public function removeFile($column)
     {
-      if ($this->photo != null) {
-        unlink(public_path(PhotoImagePage::PATH . $this->photo));
-      }
+        if ($this->$column != null && file_exists(PhotoImagePage::PATH . $this->$column)) {
+            unlink(public_path(PhotoImagePage::PATH . $this->$column));
+        }
     }
 
     /**
