@@ -31,9 +31,9 @@ class Subprogramme extends Model
 
     public function program()
     {
-        return $this->belongsTo(Program::class)->withTrashed();
+        return $this->belongsTo(Program::class, 'program_id')->withTrashed();
     }
 
-    
+
 
 }

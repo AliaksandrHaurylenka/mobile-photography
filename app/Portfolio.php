@@ -48,7 +48,7 @@ class Portfolio extends Model
       }
     }
 
-    public function removePhoto($column)
+    public function removeFile($column)
     {
       if ($this->$column != null) {
         unlink(public_path(Portfolio::PATH . $this->$column));
@@ -62,7 +62,7 @@ class Portfolio extends Model
     public function remove()
     {
       $this->removeImg();
-      $this->forceDelete();
+//      $this->forceDelete();
     }
 
 }

@@ -36,13 +36,22 @@ class Price extends Model
     /**
      * Удаление фото при удалении записи в базе
      * Функция используется в update и perma_del
+     * @param $column
      */
-    public function removeImg()
+//    public function removeImg()
+//    {
+//      if ($this->flag != null) {
+//        // Storage::delete(Price::PATH . $this->flag);
+//        unlink(public_path(Price::PATH . $this->flag));
+//      }
+//    }
+
+
+    public function removeFile($column)
     {
-      if ($this->flag != null) {
-        // Storage::delete(Price::PATH . $this->flag);
-        unlink(public_path(Price::PATH . $this->flag));
-      }
+        if ($this->$column != null) {
+            unlink(public_path(Price::PATH . $this->$column));
+        }
     }
 
 }

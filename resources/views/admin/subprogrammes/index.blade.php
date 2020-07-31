@@ -6,7 +6,7 @@
     @can('subprogramme_create')
     <p>
         <a href="{{ route('admin.subprogrammes.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
+
     </p>
     @endcan
 
@@ -42,7 +42,7 @@
                         @endif
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @if (count($subprogrammes) > 0)
                         @foreach ($subprogrammes as $subprogramme)
@@ -56,7 +56,7 @@
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     @can('subprogramme_delete')
-                                                                        {!! Form::open(array(
+                                    {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'POST',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
@@ -80,7 +80,7 @@
                                     <a href="{{ route('admin.subprogrammes.edit',[$subprogramme->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan
                                     @can('subprogramme_delete')
-{!! Form::open(array(
+                                    {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
@@ -103,7 +103,7 @@
     </div>
 @stop
 
-@section('javascript') 
+@section('javascript')
     <script>
         @can('subprogramme_delete')
             @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.subprogrammes.mass_destroy') }}'; @endif

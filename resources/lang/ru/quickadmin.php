@@ -31,6 +31,7 @@ return [
 	'portfolio' => [
 		'title' => 'Портфолио',
 		'fields' => [
+		    'id' => 'ID',
 			'photo' => 'Фото "До" обработки',
 			'photo_after' => 'Фото "После" обработки',
 			'category' => 'Категория',
@@ -63,7 +64,7 @@ return [
 			'lessons' => 'Уроки',
 		],
 		],
-		
+
 	'subprogramme' => [
 		'title' => 'Подпрограммы',
 		'fields' => [

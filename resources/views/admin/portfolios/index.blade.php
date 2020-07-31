@@ -33,6 +33,7 @@
                             @if ( request('show_deleted') != 1 )<th style="text-align:center;"><input type="checkbox" id="select-all" /></th>@endif
                         @endcan
 
+                        <th>@lang('quickadmin.portfolio.fields.id')</th>
                         <th>@lang('quickadmin.portfolio.fields.photo')</th>
                         <th>@lang('quickadmin.portfolio.fields.photo_after')</th>
                         <th>@lang('quickadmin.portfolio.fields.category')</th>
@@ -51,6 +52,12 @@
                                 @can('portfolio_delete')
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
+
+                                <td field-key='id' align="center">
+                                    @if($portfolio->id)
+                                        {{ $portfolio->id }}
+                                    @endif
+                                </td>
 
                                 <td field-key='photo' align="center">
                                     @if($portfolio->photo)

@@ -103,13 +103,17 @@ class CRUDFile
   }
 
 
-  public function perma_del_file($id)
+  public function perma_del_file($id, array $columns)
   {
     $this->gate('delete');
 
     $data = $this->model::onlyTrashed()->findOrFail($id);
-    $data->forceDelete();
-    $data->removeImg();//функция в модели
+
+    foreach ($columns as $column){
+        $data->forceDelete();
+        $data->removeFile($column);//функция в модели
+    }
+
   }
 
 
@@ -122,17 +126,22 @@ class CRUDFile
   }
 
 
-  public function updateSaveFileOne($request, $id, $column)
+  public function updateSaveFile($request, $id, array $columns)
   {
       $this->gate('edit');
 
       $data = $this->model::findOrFail($id);
-      if($_FILES[$column]['name']){
-          $request = $this->saveFiles($request);
-          $data->removeImg();//функция в модели
+
+      foreach ($columns as $column){
+          if($_FILES[$column]['name']){
+              $request = $this->saveFiles($request);
+              $data->removeFile($column);//функция в модели
+          }
       }
       $data->update($request->all());
   }
+
+
 
   public function check_file($request, $id, $column)
   {

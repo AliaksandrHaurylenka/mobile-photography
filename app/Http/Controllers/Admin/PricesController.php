@@ -55,7 +55,7 @@ class PricesController extends Controller
 
     public function update(UpdatePricesRequest $request, $id)
     {
-        $this->crud->updateSaveFileOne($request, $id, 'flag');
+        $this->crud->updateSaveFile($request, $id, ['flag']);
         return redirect()->route('admin.prices.index');
     }
 
@@ -92,7 +92,7 @@ class PricesController extends Controller
 
     public function perma_del($id)
     {
-        $this->crud->perma_del_file($id);
+        $this->crud->perma_del_file($id, ['flag']);
         return redirect()->route('admin.prices.index');
     }
 }

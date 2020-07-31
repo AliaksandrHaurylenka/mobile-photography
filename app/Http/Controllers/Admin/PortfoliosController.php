@@ -6,39 +6,36 @@ use App\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Traits\FileUploadTraitUser;
+//use App\Http\Controllers\Traits\FileUploadTraitUser;
 use App\Http\Requests\Admin\StorePortfoliosRequest;
 use App\Http\Requests\Admin\UpdatePortfoliosRequest;
 
-use App\Http\Controllers\Admin\Obj\CRUD;
+use App\Http\Controllers\Admin\Obj\CRUDFile;
 
 class PortfoliosController extends Controller
 {
-    use FileUploadTraitUser;
+//    use FileUploadTraitUser;
     private $crud;
 
 
     public function __construct()
     {
-        $this->crud = new CRUD('portfolio', Portfolio::class);
+        $this->crud = new CRUDFile('portfolio', Portfolio::class);
     }
 
 
     public function index()
     {
-        if (! Gate::allows('portfolio_access')) {
-            return abort(401);
-        }
-
-
-        if (request('show_deleted') == 1) {
-            if (! Gate::allows('portfolio_delete')) {
-                return abort(401);
-            }
-            $portfolios = Portfolio::onlyTrashed()->get();
-        } else {
-            $portfolios = Portfolio::select(['id', 'photo', 'photo_after', 'category_id'])->latest()->get();
-        }
+//        $this->crud->gate('delete');
+//
+//
+//        if (request('show_deleted') == 1) {
+//            $this->crud->gate('delete');
+//            $portfolios = Portfolio::onlyTrashed()->get();
+//        } else {
+//            $portfolios = Portfolio::select(['id', 'photo', 'photo_after', 'category_id'])->latest()->get();
+//        }
+        $portfolios = $this->crud->index();
 
         return view('admin.portfolios.index', compact('portfolios'));
     }
@@ -70,25 +67,7 @@ class PortfoliosController extends Controller
 
     public function update(UpdatePortfoliosRequest $request, $id)
     {
-//        if (! Gate::allows('portfolio_edit')) {
-//            return abort(401);
-//        }
-//
-//        $portfolio = Portfolio::findOrFail($id);
-//        if($_FILES['photo']['name']){
-//            $request = $this->saveFiles($request);
-//            $portfolio->removePhoto('photo');
-//        }
-//        if($_FILES['photo_after']['name']){
-//            $request = $this->saveFiles($request);
-//            $portfolio->removePhoto('photo_after');
-//        }
-//
-//        $portfolio->update($request->all());
-
-        $this->crud->updateSaveFile($request, $id, 'photo');
-        $this->crud->updateSaveFile($request, $id, 'photo_after');
-
+        $this->crud->updateSaveFile($request, $id, ['photo', 'photo_after']);
         return redirect()->route('admin.portfolios.index');
     }
 
@@ -96,7 +75,6 @@ class PortfoliosController extends Controller
 
     public function show($id)
     {
-
         $portfolio = $this->crud->show($id);
         return view('admin.portfolios.show', compact('portfolio'));
     }
@@ -105,12 +83,7 @@ class PortfoliosController extends Controller
 
     public function destroy($id)
     {
-        if (! Gate::allows('portfolio_delete')) {
-            return abort(401);
-        }
-        $portfolio = Portfolio::findOrFail($id);
-        $portfolio->delete();
-
+        $this->crud->destroy($id);
         return redirect()->route('admin.portfolios.index');
     }
 
@@ -131,13 +104,7 @@ class PortfoliosController extends Controller
 
     public function perma_del($id)
     {
-        if (! Gate::allows('portfolio_delete')) {
-            return abort(401);
-        }
-        $portfolio = Portfolio::onlyTrashed()->findOrFail($id);
-        $portfolio->forceDelete();
-        $portfolio->remove();
-
+        $this->crud->perma_del_file($id, ['photo', 'photo_after']);
         return redirect()->route('admin.portfolios.index');
     }
 }
