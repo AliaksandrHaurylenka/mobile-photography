@@ -13,13 +13,8 @@
                 <div class="col-md-6">
                     <table class="table table-bordered table-striped">
                         <tr>
-                            <th>@lang('quickadmin.portfolio.fields.photo')</th>
-                            <td field-key='photo'>@if($portfolio->photo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $portfolio->photo) }}" target="_blank">Download file</a>@endif</td>
-                        </tr>
-                        <tr>
                             <th>@lang('quickadmin.portfolio.fields.category')</th>
                             <td field-key='category'>{{ $portfolio->category->title ?? '' }}</td>
-<td field-key='link'>{{ isset($portfolio->category) ? $portfolio->category->link : '' }}</td>
                         </tr>
                     </table>
                 </div>
@@ -29,6 +24,21 @@
 
             <a href="{{ route('admin.portfolios.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
         </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6 form-group text-center">
+                    @if ($portfolio->photo)
+                        <img src="{{ asset(env('UPLOAD_PATH') . App\Portfolio::PATH . $portfolio->photo) }}" style="width: 200px;">
+                    @endif
+                </div>
+
+                <div class="col-sm-6 form-group text-center">
+                    @if ($portfolio->photo_after)
+                        <img src="{{ asset(env('UPLOAD_PATH') . App\Portfolio::PATH . $portfolio->photo_after) }}" style="width: 200px;">
+                    @endif
+                </div>
+            </div>
     </div>
 @stop
 
