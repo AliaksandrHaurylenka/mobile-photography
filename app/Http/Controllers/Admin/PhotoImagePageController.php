@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\PhotoImagePage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StorePhotoImagePagesRequest;
 use App\Http\Requests\Admin\UpdatePhotoImagePagesRequest;
@@ -40,7 +39,7 @@ class PhotoImagePageController extends Controller
 
     public function store(StorePhotoImagePagesRequest $request)
     {
-        $this->crud->storeSaveFile($request);
+        $this->crud->store($request);
         return redirect()->route('admin.photo_image_pages.index');
     }
 
@@ -55,7 +54,7 @@ class PhotoImagePageController extends Controller
 
     public function update(UpdatePhotoImagePagesRequest $request, $id)
     {
-        $this->crud->updateSaveFile($request, $id, ['photo']);
+        $this->crud->update_file($request, $id, ['photo']);
         return redirect()->route('admin.photo_image_pages.index');
     }
 

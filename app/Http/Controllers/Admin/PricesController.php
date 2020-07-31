@@ -40,7 +40,7 @@ class PricesController extends Controller
 
     public function store(StorePricesRequest $request)
     {
-        $this->crud->storeSaveFile($request);
+        $this->crud->store($request);
         return redirect()->route('admin.prices.index');
     }
 
@@ -55,7 +55,7 @@ class PricesController extends Controller
 
     public function update(UpdatePricesRequest $request, $id)
     {
-        $this->crud->updateSaveFile($request, $id, ['flag']);
+        $this->crud->update_file($request, $id, ['flag']);
         return redirect()->route('admin.prices.index');
     }
 

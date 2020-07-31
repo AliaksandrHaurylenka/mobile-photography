@@ -60,7 +60,6 @@ class CRUD implements CRUDInterface
   public function edit($id)
   {
     $this->gate('edit');
-
     return $this->model::findOrFail($id);
   }
 

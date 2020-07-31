@@ -4,17 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Portfolio;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
-//use App\Http\Controllers\Traits\FileUploadTraitUser;
 use App\Http\Requests\Admin\StorePortfoliosRequest;
 use App\Http\Requests\Admin\UpdatePortfoliosRequest;
-
 use App\Http\Controllers\Admin\Obj\CRUDFile;
 
 class PortfoliosController extends Controller
 {
-//    use FileUploadTraitUser;
+
     private $crud;
 
 
@@ -51,7 +48,7 @@ class PortfoliosController extends Controller
 
     public function store(StorePortfoliosRequest $request)
     {
-        $this->crud->storeSaveFile($request);
+        $this->crud->store($request);
         return redirect()->route('admin.portfolios.index');
     }
 
@@ -67,7 +64,7 @@ class PortfoliosController extends Controller
 
     public function update(UpdatePortfoliosRequest $request, $id)
     {
-        $this->crud->updateSaveFile($request, $id, ['photo', 'photo_after']);
+        $this->crud->update_file($request, $id, ['photo', 'photo_after']);
         return redirect()->route('admin.portfolios.index');
     }
 
