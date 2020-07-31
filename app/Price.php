@@ -35,7 +35,7 @@ class Price extends Model
 
     /**
      * Удаление фото при удалении записи в базе
-     * Функция используется в update
+     * Функция используется в update и perma_del
      */
     public function removeImg()
     {
@@ -43,16 +43,6 @@ class Price extends Model
         // Storage::delete(Price::PATH . $this->flag);
         unlink(public_path(Price::PATH . $this->flag));
       }
-    }
-
-    /**
-     * Удаление фото при удалении записи в базе
-     * Функция используется в perma_del
-     */
-    public function remove()
-    {
-      $this->removeImg();
-      $this->forceDelete();
     }
 
 }

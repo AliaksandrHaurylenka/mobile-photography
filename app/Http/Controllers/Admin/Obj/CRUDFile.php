@@ -2,13 +2,15 @@
 namespace App\Http\Controllers\Admin\Obj;
 
 
+use App\Http\Controllers\Traits\FileUploadTraitUser;
 use Illuminate\Support\Facades\Gate;
-use App\Http\Controllers\Admin\UserInterface\CRUDInterface;
+//use App\Http\Controllers\Admin\UserInterface\CRUDInterface;
 
 
 
-class CRUD implements CRUDInterface
+class CRUDFile
 {
+    use FileUploadTraitUser;
 
   private $nameTable;
   private $model;
@@ -50,11 +52,6 @@ class CRUD implements CRUDInterface
   }
 
 
-  public function store($request)
-  {
-    $this->gate('create');
-    $this->model::create($request->all());
-  }
 
 
   public function edit($id)
@@ -64,14 +61,6 @@ class CRUD implements CRUDInterface
     return $this->model::findOrFail($id);
   }
 
-
-  public function update($request, $id)
-  {
-    $this->gate('edit');
-
-    $data = $this->model::findOrFail($id);
-    $data->update($request->all());
-  }
 
 
   public function show($id)
@@ -114,12 +103,46 @@ class CRUD implements CRUDInterface
   }
 
 
-  public function perma_del($id)
+  public function perma_del_file($id)
   {
     $this->gate('delete');
 
     $data = $this->model::onlyTrashed()->findOrFail($id);
     $data->forceDelete();
+    $data->removeImg();//функция в модели
+  }
+
+
+
+  public function storeSaveFile($request)
+  {
+      $this->gate('create');
+      $request = $this->saveFiles($request);
+      $this->model::create($request->all());
+  }
+
+
+  public function updateSaveFileOne($request, $id, $column)
+  {
+      $this->gate('edit');
+
+      $data = $this->model::findOrFail($id);
+      if($_FILES[$column]['name']){
+          $request = $this->saveFiles($request);
+          $data->removeImg();//функция в модели
+      }
+      $data->update($request->all());
+  }
+
+  public function check_file($request, $id, $column)
+  {
+      $data = $this->model::findOrFail($id);
+      if($_FILES[$column]['name']){
+          $data->removeImg();//функция в модели
+          $request = $this->saveFiles($request);
+
+      }
+      $data->update($request->all());
   }
 
 }

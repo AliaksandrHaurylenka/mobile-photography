@@ -8,20 +8,20 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StorePricesRequest;
 use App\Http\Requests\Admin\UpdatePricesRequest;
-use App\Http\Controllers\Traits\FileUploadTraitUser;
+//use App\Http\Controllers\Traits\FileUploadTraitUser;
 
-use App\Http\Controllers\Admin\Obj\CRUD;
+use App\Http\Controllers\Admin\Obj\CRUDFile;
 
 class PricesController extends Controller
 {
-    use FileUploadTraitUser;
+//    use FileUploadTraitUser;
 
     private $crud;
 
 
     public function __construct()
     {
-        $this->crud = new CRUD('price', Price::class);
+        $this->crud = new CRUDFile('price', Price::class);
     }
 
 
@@ -40,9 +40,6 @@ class PricesController extends Controller
 
     public function store(StorePricesRequest $request)
     {
-//        $this->crud->gate('view');
-//        $request = $this->saveFiles($request);
-//        $price = Price::create($request->all());
         $this->crud->storeSaveFile($request);
         return redirect()->route('admin.prices.index');
     }
@@ -58,17 +55,7 @@ class PricesController extends Controller
 
     public function update(UpdatePricesRequest $request, $id)
     {
-//        $this->crud->gate('edit');
-//
-//        $price = Price::findOrFail($id);
-//        if($_FILES['flag']['name']){
-//            $request = $this->saveFiles($request);
-//            $price->removeImg();
-//        }
-//        $price->update($request->all());
-
-        $this->crud->updateSaveFile($request, $id, 'flag');
-
+        $this->crud->updateSaveFileOne($request, $id, 'flag');
         return redirect()->route('admin.prices.index');
     }
 
@@ -84,12 +71,7 @@ class PricesController extends Controller
 
     public function destroy($id)
     {
-        if (! Gate::allows('price_delete')) {
-            return abort(401);
-        }
-        $price = Price::findOrFail($id);
-        $price->delete();
-
+        $this->crud->destroy($id);
         return redirect()->route('admin.prices.index');
     }
 
@@ -110,13 +92,7 @@ class PricesController extends Controller
 
     public function perma_del($id)
     {
-        if (! Gate::allows('price_delete')) {
-            return abort(401);
-        }
-        $price = Price::onlyTrashed()->findOrFail($id);
-        $price->forceDelete();
-        $price->remove();
-
+        $this->crud->perma_del_file($id);
         return redirect()->route('admin.prices.index');
     }
 }
