@@ -32,17 +32,4 @@ class Price extends Model
         $this->attributes['price'] = $input ? $input : null;
     }
 
-
-    /**
-     * Удаление фото при удалении записи в базе
-     * Функция используется в update и perma_del
-     * @param $column
-     */
-    public function removeFile($column)
-    {
-        if ($this->$column != null && file_exists(Price::PATH . $this->$column)) {
-            unlink(public_path(Price::PATH . $this->$column));
-        }
-    }
-
 }

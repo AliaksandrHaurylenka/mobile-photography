@@ -44,7 +44,7 @@ class CRUDFile extends CRUD
         foreach ($columns as $column) {
             if ($_FILES[$column]['name']) {
                 $request = $this->saveFiles($request);
-                $this->delete_a_file_when_updating($id, $column);
+                $this->removeFile($id, $column, $data);
             }
         }
         $data->update($request->all());
@@ -55,25 +55,11 @@ class CRUDFile extends CRUD
      * Функция используется в update и perma_del
      * @param $id
      * @param $column
+     * @param $method
      */
-//    private function removeFile($id, $column)
-//    {
-//        $data = $this->model::onlyTrashed()->findOrFail($id);
-//        if ($data->$column != null && file_exists($this->model::PATH . $data->$column)) {
-//            unlink(public_path($this->model::PATH . $data->$column));
-//        }
-//    }
-    private function delete_a_file_when_updating($id, $column)
+    private function removeFile($id, $column, $method)
     {
-        $data = $this->model::findOrFail($id);
-        if ($data->$column != null && file_exists($this->model::PATH . $data->$column)) {
-            unlink(public_path($this->model::PATH . $data->$column));
-        }
-    }
-
-    private function delete_a_file_permanently($id, $column)
-    {
-        $data = $this->model::onlyTrashed()->findOrFail($id);
+        $data = $method;
         if ($data->$column != null && file_exists($this->model::PATH . $data->$column)) {
             unlink(public_path($this->model::PATH . $data->$column));
         }
@@ -87,7 +73,7 @@ class CRUDFile extends CRUD
         $data = $this->model::onlyTrashed()->findOrFail($id);
 
         foreach ($columns as $column) {
-            $this->delete_a_file_permanently($id, $column);
+            $this->removeFile($id, $column, $data);
             $data->forceDelete();
         }
 
