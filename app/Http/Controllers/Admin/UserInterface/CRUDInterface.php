@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\UserInterface;
 
 interface CRUDInterface
 {
-  public function gate($action);
+//  public function gate($action);
 
   public function index();
 

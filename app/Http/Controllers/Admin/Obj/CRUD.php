@@ -22,7 +22,7 @@ class CRUD implements CRUDInterface
 
 
 
-  public function gate($action)
+  protected function gate($action)
   {
     if (! Gate::allows($this->nameTable . '_' . $action)) {
       return abort(401);
