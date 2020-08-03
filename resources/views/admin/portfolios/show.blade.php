@@ -29,13 +29,15 @@
             <div class="row">
                 <div class="col-sm-6 form-group text-center">
                     @if ($portfolio->photo)
-                        <img src="{{ asset(env('UPLOAD_PATH') . App\Portfolio::PATH . $portfolio->photo) }}" style="width: 200px;">
+                        <h2>@lang('quickadmin.portfolio.fields.photo')</h2>
+                        <img src="{{ asset(env('UPLOAD_PATH') . App\Portfolio::PATH . $portfolio->photo) }}" class="img-responsive">
                     @endif
                 </div>
 
                 <div class="col-sm-6 form-group text-center">
                     @if ($portfolio->photo_after)
-                        <img src="{{ asset(env('UPLOAD_PATH') . App\Portfolio::PATH . $portfolio->photo_after) }}" style="width: 200px;">
+                        <h2>@lang('quickadmin.portfolio.fields.photo_after')</h2>
+                        <img src="{{ asset(env('UPLOAD_PATH') . App\Portfolio::PATH . $portfolio->photo_after) }}" class="img-responsive">
                     @endif
                 </div>
             </div>
