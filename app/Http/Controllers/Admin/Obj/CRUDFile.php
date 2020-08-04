@@ -12,27 +12,23 @@ class CRUDFile extends CRUD
 
     private $nameTable;
     private $model;
-    private $delete;
-    private $create;
-    private $edit;
-    private $view;
+
+    const DELETE = 'delete';
+    const CREATE = 'create';
+    const EDIT = 'edit';
 
 
-    public function __construct($name, $model, $delete, $create, $edit, $view)
+    public function __construct($name, $model)
     {
-        parent::__construct($name, $model, $delete, $create, $edit, $view);
+        parent::__construct($name, $model);
         $this->nameTable = $name;
         $this->model = $model;
-        $this->delete = $delete;
-        $this->create = $create;
-        $this->edit = $edit;
-        $this->view = $view;
     }
 
 
     public function store($request)
     {
-        $this->gate($this->create);
+        $this->gate(self::CREATE);
         $request = $this->saveFiles($request);
         $this->model::create($request->all());
     }
@@ -40,7 +36,7 @@ class CRUDFile extends CRUD
 
     public function update_file($request, $id, array $columns)
     {
-        $this->gate($this->edit);
+        $this->gate(self::EDIT);
         $this->check_file($request, $id, $columns);
     }
 
@@ -76,7 +72,7 @@ class CRUDFile extends CRUD
 
     public function perma_del_file($id, array $columns)
     {
-        $this->gate($this->delete);
+        $this->gate(self::DELETE);
 
         $data = $this->model::onlyTrashed()->findOrFail($id);
 

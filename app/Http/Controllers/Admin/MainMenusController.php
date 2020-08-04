@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\MainMenu;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreMainMenusRequest;
 use App\Http\Requests\Admin\UpdateMainMenusRequest;
@@ -22,7 +21,7 @@ class MainMenusController extends Controller
 
     public function __construct()
     {
-        $this->crud = new CRUD('main_menu', MainMenu::class, 'delete', 'create', 'edit', 'view');
+        $this->crud = new CRUD('main_menu', MainMenu::class);
     }
 
     public function index()

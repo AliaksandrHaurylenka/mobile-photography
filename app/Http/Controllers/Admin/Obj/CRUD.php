@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin\Obj;
 
 
@@ -6,127 +7,125 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Admin\UserInterface\CRUDInterface;
 
 
-
 class CRUD implements CRUDInterface
 {
 
-  private $nameTable;
-  private $model;
-  private $delete;
-  private $create;
-  private $edit;
-  private $view;
+    private $nameTable;
+    private $model;
 
 
-  public function __construct($name, $model, $delete, $create, $edit, $view)
+    const DELETE = 'delete';
+    const CREATE = 'create';
+    const EDIT = 'edit';
+    const VIEW = 'view';
+    const SHOW_DELETED = 'show_deleted';
+
+    const MASS_DESTROY_INPUT_NAME = 'ids';
+    const NAME_ROW = 'id';
+
+
+    public function __construct($name, $model)
     {
-      $this->nameTable = $name;
-      $this->model =  $model;
-      $this->delete = $delete;
-      $this->create = $create;
-      $this->edit = $edit;
-      $this->view = $view;
+        $this->nameTable = $name;
+        $this->model = $model;
     }
 
 
-
-  protected function gate($action)
-  {
-    if (! Gate::allows($this->nameTable . '_' . $action)) {
-      return abort(401);
-    }
-  }
-
-
-  public function index()
-  {
-    if (request('show_deleted') == 1) {
-      $this->gate($this->delete);
-
-      $nameTable = $this->model::onlyTrashed()->get();
-    } else {
-      $nameTable = $this->model::all();
-    }
-
-    return $nameTable;
-  }
-
-
-  public function create()
-  {
-    return $this->gate($this->create);
-  }
-
-
-  public function store($request)
-  {
-    $this->gate($this->create);
-    $this->model::create($request->all());
-  }
-
-
-  public function edit($id)
-  {
-    $this->gate($this->edit);
-    return $this->model::findOrFail($id);
-  }
-
-
-  public function update($request, $id)
-  {
-    $this->gate($this->edit);
-
-    $data = $this->model::findOrFail($id);
-    $data->update($request->all());
-  }
-
-
-  public function show($id)
-  {
-    $this->gate($this->view);
-
-    return $this->model::findOrFail($id);
-  }
-
-
-  public function destroy($id)
-  {
-    $this->gate($this->delete);
-
-    $data = $this->model::findOrFail($id);
-    $data->delete();
-  }
-
-
-  public function massDestroy($request)
-  {
-      $this->gate($this->delete);
-
-      if ($request->input('ids')) {
-        $entries = $this->model::whereIn('id', $request->input('ids'))->get();
-
-        foreach ($entries as $entry) {
-            $entry->delete();
+    protected function gate($action)
+    {
+        if (!Gate::allows($this->nameTable . '_' . $action)) {
+            return abort(401);
         }
-      }
-  }
+    }
 
 
-  public function restore($id)
-  {
-    $this->gate($this->delete);
+    public function index()
+    {
+        if (request(self::SHOW_DELETED) == 1) {
+            $this->gate(self::DELETE);
+            $nameTable = $this->model::onlyTrashed()->get();
+        } else {
+            $nameTable = $this->model::all();
+        }
 
-    $data = $this->model::onlyTrashed()->findOrFail($id);
-    $data->restore();
-  }
+        return $nameTable;
+    }
 
 
-  public function perma_del($id)
-  {
-    $this->gate($this->delete);
+    public function create()
+    {
+        return $this->gate(self::CREATE);
+    }
 
-    $data = $this->model::onlyTrashed()->findOrFail($id);
-    $data->forceDelete();
-  }
+
+    public function store($request)
+    {
+        $this->gate(self::CREATE);
+        $this->model::create($request->all());
+    }
+
+
+    public function edit($id)
+    {
+        $this->gate(self::EDIT);
+        return $this->model::findOrFail($id);
+    }
+
+
+    public function update($request, $id)
+    {
+        $this->gate(self::EDIT);
+
+        $data = $this->model::findOrFail($id);
+        $data->update($request->all());
+    }
+
+
+    public function show($id)
+    {
+        $this->gate(self::VIEW);
+
+        return $this->model::findOrFail($id);
+    }
+
+
+    public function destroy($id)
+    {
+        $this->gate(self::DELETE);
+
+        $data = $this->model::findOrFail($id);
+        $data->delete();
+    }
+
+
+    public function massDestroy($request)
+    {
+        $this->gate(self::DELETE);
+
+        if ($request->input(self::MASS_DESTROY_INPUT_NAME)) {
+            $entries = $this->model::whereIn(self::NAME_ROW, $request->input(self::MASS_DESTROY_INPUT_NAME))->get();
+            foreach ($entries as $entry) {
+                $entry->delete();
+            }
+        }
+    }
+
+
+    public function restore($id)
+    {
+        $this->gate(self::DELETE);
+
+        $data = $this->model::onlyTrashed()->findOrFail($id);
+        $data->restore();
+    }
+
+
+    public function perma_del($id)
+    {
+        $this->gate(self::DELETE);
+
+        $data = $this->model::onlyTrashed()->findOrFail($id);
+        $data->forceDelete();
+    }
 
 }

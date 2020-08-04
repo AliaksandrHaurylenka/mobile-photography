@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Price;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StorePricesRequest;
 use App\Http\Requests\Admin\UpdatePricesRequest;
@@ -21,7 +20,7 @@ class PricesController extends Controller
 
     public function __construct()
     {
-        $this->crud = new CRUDFile('price', Price::class, 'delete', 'create', 'edit', 'view');
+        $this->crud = new CRUDFile('price', Price::class);
     }
 
 
