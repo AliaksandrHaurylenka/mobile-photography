@@ -17,7 +17,7 @@ class PortfoliosController extends Controller
 
     public function __construct()
     {
-        $this->crud = new CRUDFile('portfolio', Portfolio::class);
+        $this->crud = new CRUDFile('portfolio', Portfolio::class, 'delete', 'create', 'edit', 'view');
     }
 
 

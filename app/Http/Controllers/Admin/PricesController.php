@@ -21,7 +21,7 @@ class PricesController extends Controller
 
     public function __construct()
     {
-        $this->crud = new CRUDFile('price', Price::class);
+        $this->crud = new CRUDFile('price', Price::class, 'delete', 'create', 'edit', 'view');
     }
 
 

@@ -18,7 +18,7 @@ class CategoriesController extends Controller
 
     public function __construct()
     {
-        $this->crud = new CRUD('category', Category::class);
+        $this->crud = new CRUD('category', Category::class, 'delete', 'create', 'edit', 'view');
     }
 
 

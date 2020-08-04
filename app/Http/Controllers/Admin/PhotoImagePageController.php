@@ -18,7 +18,7 @@ class PhotoImagePageController extends Controller
 
     public function __construct()
     {
-        $this->crud = new CRUDFile('photo_image_page', PhotoImagePage::class);
+        $this->crud = new CRUDFile('photo_image_page', PhotoImagePage::class, 'delete', 'create', 'edit', 'view');
     }
 
 

@@ -22,7 +22,7 @@ class MainMenusController extends Controller
 
     public function __construct()
     {
-        $this->crud = new CRUD('main_menu', MainMenu::class);
+        $this->crud = new CRUD('main_menu', MainMenu::class, 'delete', 'create', 'edit', 'view');
     }
 
     public function index()

@@ -17,7 +17,7 @@ class MenuSocialsController extends Controller
 
     public function __construct()
     {
-        $this->crud = new CRUD('menu_social', MenuSocial::class);
+        $this->crud = new CRUD('menu_social', MenuSocial::class, 'delete', 'create', 'edit', 'view');
     }
 
 
