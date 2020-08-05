@@ -32,6 +32,7 @@
               <th style="text-align:center;"><input type="checkbox" id="select-all"/></th>@endif
           @endcan
 
+          <th>@lang('quickadmin.comment.fields.id')</th>
           <th>@lang('quickadmin.comment.fields.name')</th>
           <th>@lang('quickadmin.comment.fields.avatar')</th>
           <!--<th>Вид спорта</th>-->
@@ -53,6 +54,7 @@
                   <td></td>@endif
               @endcan
 
+              <td field-key='id'>{!! $comment->id !!}</td>
               <td field-key='name'>{!! $comment->name !!}</td>
               <td field-key='avatar' style="width: 10%">
                 @if($comment->avatar)

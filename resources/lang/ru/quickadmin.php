@@ -113,6 +113,7 @@ return [
 	'comment' => [
 		'title' => 'Отзывы',
 		'fields' => [
+		    'id' => 'ID',
 			'name' => 'Имя',
 			'avatar' => 'Аватар',
 			'comment' => 'Отзыв',
